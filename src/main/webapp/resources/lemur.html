@@ -21,7 +21,7 @@
         <a class="pure-menu-heading" href="#">
             <img class="logo" src="/resources/img/weather-icon.png">
         </a>
-        <span class="header-element page-title">Weather tracker</span>
+        <span class="header-element page-title">Lemur</span>
 
     </div>
 </header>
@@ -49,68 +49,6 @@
         </div>
     </div>
 
-    <!--<div id="forecast">-->
-    <!--<pre>{{ weather.forecast | json }}</pre>-->
-    <!--</div>-->
-
-    <div class="table">
-        <div ng-controller="WeatherCtrl">
-            <!--<div id="forecast">-->
-            <!--<h1>Forecast: {{ weather.forecast }}</h1>-->
-            <!--</div>-->
-            <div id="container">
-                <div ng-repeat="item in weather.forecast.weathers">
-                    <img ng-src="{{item.img}}"/>
-
-                    <h2>{{item.temperature}}&deg;C</h2>
-                </div>
-            </div>
-            <div id="container">
-                <div ng-repeat="item in weather.forecast.weathers">
-                    <img ng-src="{{item.img}}"/>
-
-                    <h2>RESPONSE: {{$scope.weatherAPI}}</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <form class="pure-form pure-form-aligned search-form">
-        <fieldset>
-            <legend>Search</legend>
-
-            <div class="pure-g pure-form-stacked search-form-content">
-
-                <div class="pure-u-sm-1-2 pure-u-1 from-field">
-                    <label>From Date </label>
-                    <input tt-date-picker name="fromDate" ng-model="vm.fromDate">
-                </div>
-
-                <div class="pure-u-sm-1-2 pure-u-1 to-field">
-                    <label>To Date</label>
-                    <input tt-date-picker name="toDate" ng-model="vm.toDate">
-                </div>
-
-                <div class="pure-u-sm-1-2 pure-u-1 from-field from-to-time">
-                    <label>From Time</label>
-                    <input tt-time-picker name="fromTime" ng-model="vm.fromTime">
-                </div>
-
-                <div class="pure-u-sm-1-2 pure-u-1 to-field from-to-time">
-                    <label>To Time</label>
-                    <input tt-time-picker name="toTime" ng-model="vm.toTime">
-                </div>
-
-                <div class="pure-u-1 search">
-                    <button type="submit" ng-click="search()"
-                            class="pure-button pure-button-primary search-button">Search
-                    </button>
-                </div>
-
-            </div>
-
-        </fieldset>
-    </form>
 
     <div class="form-separator"></div>
 
@@ -118,7 +56,6 @@
         <button type="submit" class="pure-button pure-button-primary" ng-click="save()">Save</button>
         <button type="reset" class="pure-button" ng-click="reset()">Reset</button>
     </div>
-
 </main>
 
 <script type="text/javascript" data-main="/resources/js/run-calories-tracker"

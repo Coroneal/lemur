@@ -9,14 +9,14 @@ angular.module('frontendServices', [])
                 }
 
                 $http.get('/meal/', {
-                    params: {
-                        fromDate: fromDate,
-                        toDate: toDate,
-                        fromTime: prepareTime(fromTime),
-                        toTime: prepareTime(toTime),
-                        pageNumber: pageNumber
-                    }
-                })
+                        params: {
+                            fromDate: fromDate,
+                            toDate: toDate,
+                            fromTime: prepareTime(fromTime),
+                            toTime: prepareTime(toTime),
+                            pageNumber: pageNumber
+                        }
+                    })
                     .then(function (response) {
                         if (response.status == 200) {
                             deferred.resolve(response.data);
@@ -106,27 +106,19 @@ angular.module('frontendServices', [])
 
 
 //                var url = 'http://api.openweathermap.org/data/2.5/weather';
-                $http.jsonp(address, { params: {
+                $http.jsonp(address, {
+                    params: {
 //                    q : $scope.city,
 //                    units : $scope.units,
-                    callback: 'JSON_CALLBACK'
-                }}).
-                    success(function (data, status, headers, config) {
-                        console.log(data);
-                        deferred.resolve(data);
-                    }).
-                    error(function (data, status, headers, config) {
-                        console.log('Error retrieving weather info');
-                        deferred.reject(err);
-                    });
-//                $http.get(address)
-//                    .success(function (data) {
-//                        deferred.resolve(response.data);
-//                    })
-//                    .error(function (err) {
-//                        console.log('Error retrieving weather info');
-//                        deferred.reject(err);
-//                    });
+                        callback: 'JSON_CALLBACK'
+                    }
+                }).success(function (data, status, headers, config) {
+                    console.log(data);
+                    deferred.resolve(data);
+                }).error(function (data, status, headers, config) {
+                    console.log('Error retrieving weather info');
+                    deferred.reject(err);
+                });
 
                 return deferred.promise;
             }

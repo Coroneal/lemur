@@ -73,19 +73,8 @@ angular.module('caloriesCounterApp', ['frontendServices', 'spring-security-csrf-
                 console.log('FOUND II!');
                 console.log(data);
                 $scope.weatherAPI = data;
-//                var log = [];
-//                angular.forEach(data.weathers, function (value) {
-//                    value.img = 'resources/img/' + value.description + '.png';
-//                }, log);
-//                $scope.weather.forecast = data;
+
             });
-        //
-        //$scope.weather = {}
-        //// Hardcode San_Francisco for now
-        //Weather.getWeatherForecast("CA/San_Francisco")
-        //    .then(function (data) {
-        //        $scope.weather.forecast = data;
-        //    });
     }])
     .controller('CaloriesTrackerCtrl', ['$scope', 'MealService', '$timeout',
         function ($scope, MealService, $timeout) {

@@ -9,9 +9,6 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
             if ($scope.form.$invalid) {
                 return;
             }
-
             $scope.login($scope.vm.userName, $scope.vm.password);
-
         };
-
     }]);

@@ -24,10 +24,10 @@ require.config({
             deps: ['angular']
         },
         common: {
-          deps: ['angular', 'csrfInterceptor', 'angularMessages']
+            deps: ['angular', 'csrfInterceptor', 'angularMessages']
         },
         loginApp: {
-            deps: [ 'common']
+            deps: ['common']
         }
     }
 });

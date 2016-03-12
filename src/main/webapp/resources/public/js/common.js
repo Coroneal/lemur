@@ -40,18 +40,16 @@ angular.module('common', ['ngMessages'])
                     "X-Login-Ajax-call": 'true'
                 }
             })
-            .then(function(response) {
-                if (response.data == 'ok') {
-                    window.location.replace('/resources/lemur.html');
-                }
-                else {
-                    $scope.vm.errorMessages = [];
-                    $scope.vm.errorMessages.push({description: 'Access denied'});
-                }
-            });
+                .then(function (response) {
+                    if (response.data == 'ok') {
+                        window.location.replace('/resources/lemur.html');
+                    }
+                    else {
+                        $scope.vm.errorMessages = [];
+                        $scope.vm.errorMessages.push({description: 'Access denied'});
+                    }
+                });
         }
-
-
     }])
     .directive('checkPasswordsMatch', function () {
         return {
