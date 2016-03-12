@@ -3,6 +3,7 @@ node_modules
 .sass-cache
 .idea
 *.iml
+*.sh
 target/
 target/**
 bower_components
