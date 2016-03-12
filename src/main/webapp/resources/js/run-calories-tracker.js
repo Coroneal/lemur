@@ -10,9 +10,6 @@ require.config({
         angularMessages: '../bower_components/angular-messages/angular-messages',
         csrfInterceptor: '../bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min',
         lodash: "../bower_components/lodash/dist/lodash",
-        jQuery: "./datetimepicker/jquery", // needed only by the date time picker
-        datetimepicker: './datetimepicker/jquery.datetimepicker',
-        editableTableWidgets: '../public/js/editable-table-widgets',
         frontendServices: 'frontend-services',
         caloriesCounterApp: "calories-counter-app"
     },
@@ -26,20 +23,14 @@ require.config({
         csrfInterceptor: {
             deps: ['angular']
         },
-        datetimepicker: {
-            deps: ['jQuery']
-        },
         angularMessages: {
             deps: ['angular']
-        },
-        editableTableWidgets: {
-            deps: ['angular', 'lodash', 'datetimepicker', 'jQuery']
         },
         frontendServices: {
             deps: ['angular', 'lodash', 'csrfInterceptor']
         },
         caloriesCounterApp: {
-            deps: ['lodash', 'angular', 'angularMessages', 'editableTableWidgets', 'frontendServices']
+            deps: ['lodash', 'angular', 'angularMessages', 'frontendServices']
         }
     }
 });

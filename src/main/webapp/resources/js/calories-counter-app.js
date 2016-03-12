@@ -1,4 +1,4 @@
-angular.module('caloriesCounterApp', ['editableTableWidgets', 'frontendServices', 'spring-security-csrf-token-interceptor'])
+angular.module('caloriesCounterApp', ['frontendServices', 'spring-security-csrf-token-interceptor'])
     .filter('excludeDeleted', function () {
         return function (input) {
             return _.filter(input, function (item) {
