@@ -27,8 +27,6 @@ The spring test profile will activate an in-memory database. After the server st
 
     http://localhost:8080/
 
-To see a user with existing data (16 meals, 8 days from 1st of January 2015 to the 8th), login with the following credentials:
-
     username: test123 / password: Password2
 
 #### Backend Security ####
