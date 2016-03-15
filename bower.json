@@ -6,8 +6,11 @@
     ],
     "description": "Lemur App",
     "dependencies": {
-        "angular": "1.3.8",
-        "angular-messages": "1.3.8",
+        "angular": "1.5.0",
+        "angular-messages": "1.5.0",
+        "angular-aria": "1.5.0",
+        "angular-animate": "1.5.0",
+        "angular-material": "1.0.6",
         "lodash": "2.4.1",
         "pure": "0.5.0",
         "requirejs": "2.1.15",
