@@ -1,4 +1,10 @@
-angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
+angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','ngMaterial'])
+    .config(function($mdThemingProvider, $mdIconProvider){
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('grey')
+            .accentPalette('yellow');
+    })
     .controller('LoginCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.onLogin = function () {

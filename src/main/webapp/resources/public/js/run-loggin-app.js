@@ -8,6 +8,9 @@ require.config({
     paths: {
         angular: '../../bower_components/angular/angular',
         angularMessages: '../../bower_components/angular-messages/angular-messages',
+        angularAria: '../../bower_components/angular-aria/angular-aria',
+        angularAnimate: '../../bower_components/angular-animate/angular-animate',
+        angularMaterial: '../../bower_components/angular-material/angular-material',
         csrfInterceptor: '../../bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min',
         lodash: "../../bower_components/lodash/dist/lodash",
         common: 'common',
@@ -23,8 +26,17 @@ require.config({
         angularMessages: {
             deps: ['angular']
         },
+        angularAria: {
+            deps: ['angular']
+        },
+        angularAnimate: {
+            deps: ['angular']
+        },
+        angularMaterial: {
+            deps: ['angular']
+        },
         common: {
-            deps: ['angular', 'csrfInterceptor', 'angularMessages']
+            deps: ['angular', 'csrfInterceptor', 'angularMessages', 'angularMessages', 'angularAria', 'angularAnimate','angularMaterial']
         },
         loginApp: {
             deps: ['common']
