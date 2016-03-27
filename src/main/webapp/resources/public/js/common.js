@@ -1,4 +1,4 @@
-angular.module('common', ['ngMessages'])
+angular.module('common', ['ngMaterial'])
     .controller('BaseFormCtrl', ['$scope', '$http', function ($scope, $http) {
 
         var fieldWithFocus;

@@ -1,9 +1,15 @@
-angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','ngMaterial'])
+angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','ngMaterial', 'ngMessages'])
     .config(function($mdThemingProvider, $mdIconProvider){
 
         $mdThemingProvider.theme('default')
-            .primaryPalette('grey')
-            .accentPalette('yellow');
+            .primaryPalette('grey', {
+                'default': '900',
+                'hue-2': '500'
+            })
+            //.backgroundPalette('grey', {
+            //    'default': '200'
+            //})
+            .accentPalette('orange');
     })
     .controller('LoginCtrl', ['$scope', '$http', function ($scope, $http) {
 

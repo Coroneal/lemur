@@ -5,110 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lemur</title>
     <link rel="stylesheet" type="text/css" href="/resources/public/css/lemur.css">
-    <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-csp.css">
     <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-material.css">
-    <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-material.layouts.css">
 </head>
 
 <body id="loginApp" layout="column">
 
-
 <!--<md-toolbar layout="row">-->
 <!--<h1>Angular Material - Starter App</h1>-->
 <!--</md-toolbar>-->
-<main ng-controller="BaseFormCtrl">
-    <div flex layout="row">
+<main class="mainLoginContainer" ng-controller="BaseFormCtrl">
+    <div class="loginContainer">
+            <md-content class="transparent" id="content">
+                <div layout="row" layout-align="center center" layout-fill  >
+                    <md-whiteframe layout="column" flex="20">
+                        <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
 
-        <md-content flex id="content">
+                            <md-content class="transparent">
 
-            <div layout="column" flex id="content" role="main">
-                <md-content layout="vertical" flex id="content">
-                    <div layout="row" layout-align="center center" layout-fill>
-                        <md-whiteframe layout="column" flex="30" layout-padding>
-
-                            <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
-
-                                <md-content>
-
-                                    <md-input-container class="md-block">
-                                        <label>Username</label>
-                                        <input name="username" ng-focus="focus('username')"
-                                               required ng-minlength="6" ng-model="vm.username">
-                                    </md-input-container>
-
+                                <md-input-container class="md-block">
+                                    <label>Username</label>
+                                    <input name="username" ng-focus="focus('username')" ng-blur="blur('username')"
+                                           required ng-minlength="6" ng-model="vm.username">
                                     <div role="alert" ng-show="isMessagesVisible('username')"
                                          ng-messages="form.username.$error">
                                         <div ng-message="required">The username is mandatory</div>
                                         <div ng-message="minlength">must have minimum 6 characters</div>
                                     </div>
+                                </md-input-container>
 
-                                    <md-input-container>
-                                        <label>Password</label>
-                                        <input ng-model="vm.password" ng-focus="focus('username')"
-                                               required type="password">
-                                    </md-input-container>
+                                <md-input-container class="md-block">
+                                    <label>Password</label>
+                                    <input name="password" ng-model="vm.password" ng-blur="blur('password')"
+                                           minlength="6" ng-focus="focus('password')"
+                                           required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
 
-                                    <md-input-container layout-align="center center">
-                                        <div layout="row" layout-sm="column" layout-margin>
-                                            <md-button type="submit" class="md-raised" flex="50" flex-sm="100">Login
-                                            </md-button>
-                                            <md-button class="md-raised md-primary" flex="50" flex-sm="100">Register
-                                            </md-button>
-                                        </div>
-                                    </md-input-container>
+                                    <div ng-show="isMessagesVisible('password')"
+                                         ng-messages="form.password.$error" ng-cloak>
+                                        <div ng-message="required">The password is mandatory</div>
+                                        <div ng-message="minlength">must have minimum 6 characters</div>
+                                        <div ng-message="pattern">At least one number and uppercase</div>
+                                    </div>
+                                </md-input-container>
 
-                                </md-content>
-                            </form>
-                        </md-whiteframe>
-                    </div>
-                </md-content>
-            </div>
-
-        </md-content>
-
+                                <md-input-container layout-align="center center">
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                        <md-button type="submit" class="md-raised" flex="70" flex-sm="100">Login
+                                        </md-button>
+                                        <md-button class="md-primary" flex="50" flex-sm="100">Register
+                                        </md-button>
+                                    </div>
+                                </md-input-container>
+                            </md-content>
+                        </form>
+                    </md-whiteframe>
+                </div>
+            </md-content>
     </div>
 </main>
 </body>
-
-<main ng-controller="BaseFormCtrl">
-
-    <tt-error-messages extra-styles="access-screen"></tt-error-messages>
-
-
-    <div class="login-container">
-        <form ng-submit="onLogin()" name="form" class="pure-form login-form" novalidate ng-controller="LoginCtrl">
-            <fieldset class="pure-group">
-                <legend>Log In</legend>
-                <div class="form-field">
-                    <input type="text" ng-focus="focus('username')" ng-blur="blur('username')" ng-model="vm.username"
-                           name="username" class="pure-input-1" placeholder="Username" required ng-minlength="6">
-
-                    <div class="error-messages" ng-show="isMessagesVisible('username')"
-                         ng-messages="form.username.$error" ng-cloak>
-                        <div ng-message="required">The username is mandatory</div>
-                        <div ng-message="minlength">must have minimum 6 characters</div>
-                    </div>
-                </div>
-                <div class="last-form-field">
-                    <input type="password" ng-focus="focus('password')" ng-blur="blur('password')"
-                           ng-model="vm.password"
-                           name="password" class="pure-input-1" placeholder="Password" required ng-minlength="6"
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
-                    <div class="error-messages" ng-show="isMessagesVisible('password')"
-                         ng-messages="form.password.$error" ng-cloak>
-                        <div ng-message="required">The password is mandatory</div>
-                        <div ng-message="minlength">must have minimum 6 characters</div>
-                        <div ng-message="pattern">At least one number and uppercase</div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <button type="submit" class="pure-button pure-input-1 pure-button-primary">Log In</button>
-            <a class="new-user-link" href="/resources/public/new-user.html">New user?</a>
-
-        </form>
-    </div>
-</main>
 
 <script type="text/javascript" data-main="/resources/public/js/run-loggin-app"
         src="/resources/bower_components/requirejs/require.js"></script>
