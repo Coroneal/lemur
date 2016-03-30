@@ -45,7 +45,5 @@ require.config({
 });
 
 require(['loginApp'], function () {
-
     angular.bootstrap(document.getElementById('loginApp'), ['loginApp']);
-
 });

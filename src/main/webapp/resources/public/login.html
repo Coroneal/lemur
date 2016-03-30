@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lemur</title>
     <link rel="stylesheet" type="text/css" href="/resources/public/css/lemur.css">
+    <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-csp.css">
     <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-material.css">
 </head>
 
@@ -13,58 +14,60 @@
 <!--<md-toolbar layout="row">-->
 <!--<h1>Angular Material - Starter App</h1>-->
 <!--</md-toolbar>-->
-<main class="mainLoginContainer" ng-controller="BaseFormCtrl">
-    <div class="loginContainer">
-            <md-content class="transparent" id="content">
 
-                <div layout="row" layout-align="center center" layout-fill  >
-                    <md-whiteframe layout="column" flex="20">
-                        <div layout="row" layout-align="center center" style="height: 100%;" layout-fill  >
-                            <img src="/resources/img/lemur-small.png" alt="lemur">
-                        </div>
+<main  class="mainLoginContainer" ng-controller="BaseFormCtrl">
+    <md-progress-linear ng-hide="vm.appReady" md-mode="indeterminate"></md-progress-linear>
+    <div class="loginContainer app-not-ready" ng-class="{'app-ready': vm.appReady}" >
+        <md-content class="transparent" id="content">
 
-                        <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
+            <div layout="row" layout-align="center center" layout-fill>
+                <md-whiteframe layout="column" flex="20">
+                    <div layout="row" layout-align="center center" style="height: 100%;" layout-fill>
+                        <img src="/resources/img/lemur-small.png" alt="lemur">
+                    </div>
 
-                            <md-content class="transparent">
+                    <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
 
-                                <md-input-container class="md-block">
-                                    <label>Username</label>
-                                    <input name="username" ng-focus="focus('username')" ng-blur="blur('username')"
-                                           required ng-minlength="6" ng-model="vm.username">
-                                    <div role="alert" ng-show="isMessagesVisible('username')"
-                                         ng-messages="form.username.$error">
-                                        <div ng-message="required">The username is mandatory</div>
-                                        <div ng-message="minlength">must have minimum 6 characters</div>
-                                    </div>
-                                </md-input-container>
+                        <md-content class="transparent">
 
-                                <md-input-container class="md-block">
-                                    <label>Password</label>
-                                    <input name="password" ng-model="vm.password" ng-blur="blur('password')"
-                                           minlength="6" ng-focus="focus('password')"
-                                           required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                            <md-input-container class="md-block">
+                                <label>Username</label>
+                                <input name="username" ng-focus="focus('username')" ng-blur="blur('username')"
+                                       required ng-minlength="6" ng-model="vm.username">
+                                <div role="alert" ng-show="isMessagesVisible('username')"
+                                     ng-messages="form.username.$error">
+                                    <div ng-message="required">The username is mandatory</div>
+                                    <div ng-message="minlength">must have minimum 6 characters</div>
+                                </div>
+                            </md-input-container>
 
-                                    <div ng-show="isMessagesVisible('password')"
-                                         ng-messages="form.password.$error" ng-cloak>
-                                        <div ng-message="required">The password is mandatory</div>
-                                        <div ng-message="minlength">must have minimum 6 characters</div>
-                                        <div ng-message="pattern">At least one number and uppercase</div>
-                                    </div>
-                                </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Password</label>
+                                <input name="password" ng-model="vm.password" ng-blur="blur('password')"
+                                       minlength="6" ng-focus="focus('password')"
+                                       required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
 
-                                <md-input-container layout-align="center center">
-                                    <div layout="row" layout-sm="column" layout-margin>
-                                        <md-button type="submit" class="md-raised" flex="70" flex-sm="100">Login
-                                        </md-button>
-                                        <md-button class="md-primary" flex="50" flex-sm="100">Register
-                                        </md-button>
-                                    </div>
-                                </md-input-container>
-                            </md-content>
-                        </form>
-                    </md-whiteframe>
-                </div>
-            </md-content>
+                                <div ng-show="isMessagesVisible('password')"
+                                     ng-messages="form.password.$error" ng-cloak>
+                                    <div ng-message="required">The password is mandatory</div>
+                                    <div ng-message="minlength">must have minimum 6 characters</div>
+                                    <div ng-message="pattern">At least one number and uppercase</div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container layout-align="center center">
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <md-button type="submit" class="md-raised" flex="70" flex-sm="100">Login
+                                    </md-button>
+                                    <md-button class="md-primary" flex="50" flex-sm="100">Register
+                                    </md-button>
+                                </div>
+                            </md-input-container>
+                        </md-content>
+                    </form>
+                </md-whiteframe>
+            </div>
+        </md-content>
     </div>
 </main>
 </body>

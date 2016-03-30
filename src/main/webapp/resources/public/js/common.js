@@ -26,6 +26,20 @@ angular.module('common', ['ngMaterial'])
             var email = $scope.vm.email != undefined ? $scope.vm.email : '';
 
             return 'username=' + username + '&password=' + password + '&email=' + email;
+        };
+
+
+        function markAppAsInitialized() {
+            if ($scope.vm.appReady == undefined) {
+                $scope.vm.appReady = true;
+            }
+        }
+
+        function isAppReady() {
+            if ($scope.vm.appReady == undefined || !$scope.vm.appReady) {
+                return false;
+            }
+            return true;
         }
 
         $scope.login = function (username, password) {
@@ -49,7 +63,10 @@ angular.module('common', ['ngMaterial'])
                         $scope.vm.errorMessages.push({description: 'Access denied'});
                     }
                 });
-        }
+        };
+
+        markAppAsInitialized();
+
     }])
     .directive('checkPasswordsMatch', function () {
         return {
