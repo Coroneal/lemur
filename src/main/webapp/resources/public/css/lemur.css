@@ -1,5 +1,5 @@
 .mainLoginContainer {
-    background: url(/resources/img/background-image.jpg) no-repeat center center fixed;
+    background: url(/resources/img/background-imagee.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7,7 +7,7 @@
     height: 100%;
 }
 .loginContainer {
-    padding-top: 10%;
+    padding-top: 5%;
 }
 
 .transparent {

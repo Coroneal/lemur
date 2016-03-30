@@ -16,8 +16,13 @@
 <main class="mainLoginContainer" ng-controller="BaseFormCtrl">
     <div class="loginContainer">
             <md-content class="transparent" id="content">
+
                 <div layout="row" layout-align="center center" layout-fill  >
                     <md-whiteframe layout="column" flex="20">
+                        <div layout="row" layout-align="center center" style="height: 100%;" layout-fill  >
+                            <img src="/resources/img/lemur-small.png" alt="lemur">
+                        </div>
+
                         <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
 
                             <md-content class="transparent">
