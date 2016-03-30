@@ -16,14 +16,13 @@
 <!--</md-toolbar>-->
 
 <main  class="mainLoginContainer" ng-controller="BaseFormCtrl">
-    <md-progress-linear ng-hide="vm.appReady" md-mode="indeterminate"></md-progress-linear>
     <div class="loginContainer app-not-ready" ng-class="{'app-ready': vm.appReady}" >
         <md-content class="transparent" id="content">
 
             <div layout="row" layout-align="center center" layout-fill>
                 <md-whiteframe layout="column" flex="20">
                     <div layout="row" layout-align="center center" style="height: 100%;" layout-fill>
-                        <img src="/resources/img/lemur-small.png" alt="lemur">
+                        <img src="/resources/img/lemur-small-tr.png" alt="lemur">
                     </div>
 
                     <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
