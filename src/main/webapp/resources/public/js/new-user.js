@@ -1,4 +1,4 @@
-angular.module('newUserApp', ['common', 'spring-security-csrf-token-interceptor'])
+angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
     .controller('NewUserCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.createUser = function () {

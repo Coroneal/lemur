@@ -35,13 +35,6 @@ angular.module('common', ['ngMaterial'])
             }
         }
 
-        function isAppReady() {
-            if ($scope.vm.appReady == undefined || !$scope.vm.appReady) {
-                return false;
-            }
-            return true;
-        }
-
         $scope.login = function (username, password) {
             var postData = $scope.preparePostData();
 

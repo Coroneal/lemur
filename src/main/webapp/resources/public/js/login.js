@@ -28,7 +28,24 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','
         $mdThemingProvider.theme('default')
             .primaryPalette('lemurPalette');
     })
-    .controller('LoginCtrl', ['$scope', '$http', function ($scope, $http) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', function ($scope, $http,$mdSidenav) {
+
+        $scope.toggleRight = buildToggler('right');
+
+        $scope.isOpenRight = function () {
+            return $mdSidenav('right').isOpen();
+        };
+
+        function buildToggler(navID) {
+            return function () {
+                $mdSidenav(navID)
+                    .toggle()
+                    .then(function () {
+                        console.log("toggle " + navID + " is done");
+                    });
+            }
+        }
+
 
         $scope.onLogin = function () {
             console.log('Attempting login with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
@@ -40,4 +57,12 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','
             }
             $scope.login($scope.vm.userName, $scope.vm.password);
         };
-    }]);
+    }])
+    .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.close = function () {
+            $mdSidenav('right').close()
+                .then(function () {
+                    $log.debug("close RIGHT is done");
+                });
+        };
+    });
