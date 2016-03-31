@@ -93,7 +93,7 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','
                         console.log("failed user creation: " + response.data);
                     }
                 });
-        }
+        };
 
         $scope.close = function () {
             $mdSidenav('right').close()
