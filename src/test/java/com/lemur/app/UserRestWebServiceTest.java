@@ -1,4 +1,4 @@
-package calories.tracker.app;
+package com.lemur.app;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@WebAppConfiguration

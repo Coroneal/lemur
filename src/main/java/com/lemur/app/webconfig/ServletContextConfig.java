@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.lemur.app.controllers")
+@ComponentScan("com.lemur.app.controller")
 public class ServletContextConfig extends WebMvcConfigurerAdapter {
 
     @Override

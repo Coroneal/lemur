@@ -1,7 +1,7 @@
 angular.module('loginApp')
-    .controller('NewUserCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    .controller('NewUserCtrl',['$scope', '$timeout', '$http', '$mdSidenav','$log', function ($scope, $timeout, $http, $mdSidenav, $log) {
 
-        $scope.createUser = function () {
+        $scope.createUser = function (newUsername, newMail, newPassword) {
             console.log('Creating user with username ' + $scope.vm.newUsername + ' and password ' + $scope.vm.newPassword);
 
             $scope.vm.submitted = true;
@@ -44,4 +44,4 @@ angular.module('loginApp')
                 });
             $scope.blur();
         };
-    });
+    }]);

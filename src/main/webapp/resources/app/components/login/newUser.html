@@ -52,7 +52,7 @@
 
                     <div ng-show="isMessagesVisible('repeatedPassword')"
                          ng-messages="registerForm.repeatedPassword.$error" checkPasswordsMatch ng-cloak>
-                        <div ng-message="required">The password is mandatory</div>
+                        <div ng-message="required">Confirm password</div>
                         <div ng-message="minlength">must have minimum 6 characters</div>
                         <div ng-message="pattern">At least one number and uppercase</div>
                         <div ng-message="equals">Passwords must match</div>

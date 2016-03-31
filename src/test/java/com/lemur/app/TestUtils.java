@@ -1,4 +1,4 @@
-package calories.tracker.app;
+package com.lemur.app;
 
 import java.sql.Time;
 import java.text.ParseException;

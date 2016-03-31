@@ -17,11 +17,7 @@ angular.module('common', ['ngMaterial'])
         };
 
         $scope.isMessagesVisible = function (fieldName) {
-            //return fieldWithFocus === fieldName || $scope.vm.submitted;
-            if(fieldWithFocus !== fieldName){
-                return false;
-            }
-            return true;
+            return fieldWithFocus === fieldName || $scope.vm.submitted;
         };
 
         $scope.preparePostData = function () {

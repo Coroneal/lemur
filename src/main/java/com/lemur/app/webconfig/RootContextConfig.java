@@ -15,7 +15,8 @@ import javax.persistence.EntityManagerFactory;
  */
 
 @Configuration
-@ComponentScan({"com.lemur.app.services", "com.lemur.app.db", "com.lemur.app.webconfig", "com.lemur.app.security"})
+@ComponentScan({"com.lemur.app.services", "com.lemur.app.init","com.lemur.app.db",
+        "com.lemur.app.webconfig", "com.lemur.app.security"})
 public class RootContextConfig {
 
     @Bean(name = "transactionManager")
