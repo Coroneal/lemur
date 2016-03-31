@@ -51,25 +51,27 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-            .antMatchers("/resources/public/**").permitAll()
+            .antMatchers("/resources/app/components/login/**").permitAll()
+            .antMatchers("/resources/js/run-loggin-app.js").permitAll()
             .antMatchers("/resources/img/**").permitAll()
+            .antMatchers("/resources/css/**").permitAll()
             .antMatchers("/resources/bower_components/**").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .defaultSuccessUrl("/resources/lemur.html")
+            .defaultSuccessUrl("/resources/index.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")
             .successHandler(new AjaxAuthenticationSuccessHandler(new SavedRequestAwareAuthenticationSuccessHandler()))
-            .loginPage("/resources/public/login.html")
+            .loginPage("/resources/app/components/login/login.html")
             .and()
             .httpBasic()
             .and()
             .logout()
             .logoutUrl("/logout")
-            .logoutSuccessUrl("/resources/public/login.html")
+            .logoutSuccessUrl("/resources/app/components/login/login.html")
             .permitAll();
 
         if ("true".equals(System.getProperty("httpsOnly"))) {

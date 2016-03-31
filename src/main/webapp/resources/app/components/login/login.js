@@ -16,11 +16,10 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','
                 'A200': '#eeff41',
                 'A400': '#c6ff00',
                 'A700': '#aeea00',
-                'contrastDefaultColor': 'dark',    // whether, by default, text (contrast)
+                'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
                                                     // on this palette should be dark or light
                 'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
                     '200', '300', '400', 'A100'],
-                'contrastDefaultColor': 'dark',
                 'contrastLightColors': '900',       // could also specify this if default was 'dark'
                 'contrastStrongLightColors': '900'
             });
@@ -59,6 +58,43 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor','
         };
     }])
     .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+
+        $scope.createUser = function () {
+            console.log('Creating user with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
+
+            $scope.vm.submitted = true;
+
+            if ($scope.form.$invalid) {
+                return;
+            }
+
+            var postData = {
+                username: $scope.vm.username,
+                plainTextPassword: $scope.vm.password,
+                email: $scope.vm.email
+            };
+
+            $http({
+                method: 'POST',
+                url: '/user',
+                data: postData,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "text/plain"
+                }
+            })
+                .then(function (response) {
+                    if (response.status == 200) {
+                        $scope.login($scope.vm.userName, $scope.vm.password);
+                    }
+                    else {
+                        $scope.vm.errorMessages = [];
+                        $scope.vm.errorMessages.push({description: response.data});
+                        console.log("failed user creation: " + response.data);
+                    }
+                });
+        }
+
         $scope.close = function () {
             $mdSidenav('right').close()
                 .then(function () {

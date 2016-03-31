@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lemur</title>
-    <link rel="stylesheet" type="text/css" href="/resources/public/css/lemur.css">
-    <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-csp.css">
-    <link rel="stylesheet" type="text/css" href="/resources/public/css/angular-material.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
 </head>
 
 <body id="loginApp" layout="column">
@@ -73,7 +73,7 @@
                 <h1 class="md-toolbar-tools">Register</h1>
             </md-toolbar>
             <md-content ng-controller="RightCtrl" layout-padding="">
-                <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
+                <form ng-submit="createUser()" name="form" novalidate ng-controller="LoginCtrl">
 
                     <md-content class="transparent">
 
@@ -143,7 +143,7 @@
 </main>
 </body>
 
-<script type="text/javascript" data-main="/resources/public/js/run-loggin-app"
+<script type="text/javascript" data-main="/resources/js/run-loggin-app"
         src="/resources/bower_components/requirejs/require.js"></script>
 </body>
 </html>

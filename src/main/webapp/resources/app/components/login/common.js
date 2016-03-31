@@ -49,7 +49,7 @@ angular.module('common', ['ngMaterial'])
             })
                 .then(function (response) {
                     if (response.data == 'ok') {
-                        window.location.replace('/resources/lemur.html');
+                        window.location.replace('/resources/index.html');
                     }
                     else {
                         $scope.vm.errorMessages = [];
