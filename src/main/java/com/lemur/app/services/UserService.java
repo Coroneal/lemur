@@ -55,6 +55,18 @@ public class UserService {
 
         userRepository.save(user);
     }
+    /**
+     * checking if username is taken
+     * @param username - the username of the new user
+     */
+    @Transactional
+    public boolean checkUsername(String username) {
+
+        assertNotBlank(username, "Username cannot be empty.");
+        assertMinimumLength(username, 6, "Username must have at least 6 characters.");
+
+        return userRepository.isUsernameAvailable(username);
+    }
 
     @Transactional(readOnly = true)
     public User findUserByUsername(String username) {

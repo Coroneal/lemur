@@ -57,6 +57,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/resources/css/**").permitAll()
             .antMatchers("/resources/bower_components/**").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
+            .antMatchers(HttpMethod.GET, "/user/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()

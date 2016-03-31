@@ -1,6 +1,7 @@
 package com.lemur.app.controller;
 
 
+import com.lemur.app.dto.SuccessDTO;
 import com.lemur.app.dto.user.NewUserDTO;
 import com.lemur.app.dto.user.UserInfoDTO;
 import com.lemur.app.model.User;
@@ -43,6 +44,13 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST)
     public void createUser(@RequestBody NewUserDTO user) {
         userService.createUser(user.getUsername(), user.getEmail(), user.getPlainTextPassword());
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public SuccessDTO checkUsername(@RequestParam(value = "username") String username){
+        return new SuccessDTO(userService.checkUsername(username));
     }
 
 

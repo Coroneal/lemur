@@ -12,17 +12,19 @@
                 <md-input-container class="md-block">
                     <label>Username</label>
                     <input name="newUsername" ng-focus="focus('newUsername')" ng-blur="blur()"
-                           required ng-minlength="6" ng-model="vm.newUsername">
+                           required ng-minlength="6" username-available ng-model="vm.newUsername">
+                    <md-progress-linear ng-if="registerForm.newUsername.$pending" md-mode="query"></md-progress-linear>
                     <div role="alert" ng-show="isMessagesVisible('newUsername')"
                          ng-messages="registerForm.newUsername.$error">
                         <div ng-message="required">The username is mandatory</div>
                         <div ng-message="minlength">must have minimum 6 characters</div>
+                        <div ng-message="usernameAvailable">user already exists</div>
                     </div>
                 </md-input-container>
 
                 <md-input-container class="md-block">
                     <label>Email</label>
-                    <input name="newEmail" ng-focus="focus('newEmail')" ng-blur="blur()"
+                    <input type="email" name="newEmail" ng-focus="focus('newEmail')" ng-blur="blur()"
                            required ng-minlength="6" ng-model="vm.newEmail">
                     <div role="alert" ng-show="isMessagesVisible('newEmail')"
                          ng-messages="registerForm.newEmail.$error">
