@@ -14,6 +14,7 @@ require.config({
         csrfInterceptor: '../bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min',
         lodash: "../bower_components/lodash/dist/lodash",
         common: '../app/components/login/common',
+        newUser: '../app/components/login/newUser',
         loginApp: '../app/components/login/login'
     },
     shim: {
@@ -37,6 +38,9 @@ require.config({
         },
         common: {
             deps: ['angular', 'csrfInterceptor', 'angularMessages', 'angularMessages', 'angularAria', 'angularAnimate','angularMaterial']
+        },
+        newUser: {
+            deps: ['common']
         },
         loginApp: {
             deps: ['common']

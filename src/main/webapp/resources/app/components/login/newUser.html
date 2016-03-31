@@ -1,0 +1,74 @@
+
+<md-sidenav id="newUser" class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Register</h1>
+    </md-toolbar>
+    <md-content layout-padding="">
+        <form ng-submit="createUser()" name="registerForm" novalidate ng-controller="NewUserCtrl">
+
+            <md-content class="transparent">
+
+                <md-input-container class="md-block">
+                    <label>Username</label>
+                    <input name="newUsername" ng-focus="focus('newUsername')" ng-blur="blur()"
+                           required ng-minlength="6" ng-model="vm.newUsername">
+                    <div role="alert" ng-show="isMessagesVisible('newUsername')"
+                         ng-messages="registerForm.newUsername.$error">
+                        <div ng-message="required">The username is mandatory</div>
+                        <div ng-message="minlength">must have minimum 6 characters</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input name="newEmail" ng-focus="focus('newEmail')" ng-blur="blur()"
+                           required ng-minlength="6" ng-model="vm.newEmail">
+                    <div role="alert" ng-show="isMessagesVisible('newEmail')"
+                         ng-messages="registerForm.newEmail.$error">
+                        <div ng-message="required">The email is mandatory</div>
+                        <div ng-message="email">must be a valid email</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="newPassword" ng-model="vm.newPassword" ng-blur="blur()"
+                           minlength="6" ng-focus="focus('newPassword')"
+                           required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  equals="{{vm.repeatedPassword}}">
+
+                    <div ng-show="isMessagesVisible('newPassword')"
+                         ng-messages="registerForm.newPassword.$error" ng-cloak>
+                        <div ng-message="required">The password is mandatory</div>
+                        <div ng-message="minlength">must have minimum 6 characters</div>
+                        <div ng-message="pattern">At least one number and uppercase</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Repeat Password</label>
+                    <input name="repeatedPassword" ng-model="vm.repeatedPassword" ng-blur="blur()"
+                           minlength="6" ng-focus="focus('repeatedPassword')"
+                           required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  equals="{{vm.newPassword}}">
+
+                    <div ng-show="isMessagesVisible('repeatedPassword')"
+                         ng-messages="registerForm.repeatedPassword.$error" checkPasswordsMatch ng-cloak>
+                        <div ng-message="required">The password is mandatory</div>
+                        <div ng-message="minlength">must have minimum 6 characters</div>
+                        <div ng-message="pattern">At least one number and uppercase</div>
+                        <div ng-message="equals">Passwords must match</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container layout-align="center center">
+                    <div layout="row" layout-sm="column" layout-margin>
+                        <md-button type="submit" class="md-raised" flex="70" flex-sm="100">Login
+                        </md-button>
+                        <md-button class="md-primary" flex="50" flex-sm="100" ng-click="close()" ng-hide="isOpenRight()">Close
+                        </md-button>
+                    </div>
+                </md-input-container>
+            </md-content>
+        </form>
+    </md-content>
+
+</md-sidenav>

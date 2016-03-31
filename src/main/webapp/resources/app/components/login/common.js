@@ -12,12 +12,16 @@ angular.module('common', ['ngMaterial'])
             fieldWithFocus = fieldName;
         };
 
-        $scope.blur = function (fieldName) {
+        $scope.blur = function () {
             fieldWithFocus = undefined;
         };
 
         $scope.isMessagesVisible = function (fieldName) {
-            return fieldWithFocus === fieldName || $scope.vm.submitted;
+            //return fieldWithFocus === fieldName || $scope.vm.submitted;
+            if(fieldWithFocus !== fieldName){
+                return false;
+            }
+            return true;
         };
 
         $scope.preparePostData = function () {
@@ -61,15 +65,34 @@ angular.module('common', ['ngMaterial'])
         markAppAsInitialized();
 
     }])
-    .directive('checkPasswordsMatch', function () {
+    .directive('equals', function () {
+
         return {
-            require: 'ngModel',
-            link: function (scope, elm, attrs, ngModel) {
-                ngModel.$validators.checkPasswordsMatch = function (modelValue, viewValue) {
-                    if (scope.vm && scope.vm.password && viewValue) {
-                        return scope.vm.password === viewValue;
-                    }
-                    return true;
+            restrict: 'A', // only activate on element attribute
+            require: '?ngModel', // get a hold of NgModelController
+            link: function(scope, elem, attrs, ngModel) {
+                if(!ngModel){
+                    return;
+                } // do nothing if no ng-model
+
+
+                // watch own value and re-validate on change
+                scope.$watch(attrs.ngModel, function() {
+                    validate();
+                });
+
+                // observe the other value and re-validate on change
+                attrs.$observe('equals', function (val) {
+                    validate();
+                });
+
+                var validate = function() {
+                    // values
+                    var val1 = ngModel.$viewValue;
+                    var val2 = attrs.equals;
+
+                    // set validity
+                    ngModel.$setValidity('equals', ! val1 || ! val2 || val1 === val2);
                 };
             }
         };

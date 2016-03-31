@@ -1,19 +1,19 @@
-angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
-    .controller('NewUserCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('loginApp')
+    .controller('NewUserCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 
         $scope.createUser = function () {
-            console.log('Creating user with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
+            console.log('Creating user with username ' + $scope.vm.newUsername + ' and password ' + $scope.vm.newPassword);
 
             $scope.vm.submitted = true;
 
-            if ($scope.form.$invalid) {
+            if ($scope.registerForm.$invalid) {
                 return;
             }
 
             var postData = {
-                username: $scope.vm.username,
-                plainTextPassword: $scope.vm.password,
-                email: $scope.vm.email
+                username: $scope.vm.newUsername,
+                plainTextPassword: $scope.vm.newPassword,
+                email: $scope.vm.newEmail
             };
 
             $http({
@@ -27,7 +27,7 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
             })
                 .then(function (response) {
                     if (response.status == 200) {
-                        $scope.login($scope.vm.userName, $scope.vm.password);
+                        $scope.login($scope.vm.newUsername, $scope.vm.newPassword);
                     }
                     else {
                         $scope.vm.errorMessages = [];
@@ -35,5 +35,13 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
                         console.log("failed user creation: " + response.data);
                     }
                 });
-        }
-    }]);
+        };
+
+        $scope.close = function () {
+            $mdSidenav('right').close()
+                .then(function () {
+                    $log.debug("close RIGHT is done");
+                });
+            $scope.blur();
+        };
+    });

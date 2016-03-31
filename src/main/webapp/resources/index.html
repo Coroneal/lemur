@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.layouts.css">
 </head>
+
+<script type="text/javascript" data-main="/resources/js/run-calories-tracker"
+        src="/resources/bower_components/requirejs/require.js"></script>
+
 <body class="pure-skin-theme" id="caloriesCounterApp" ng-controller="CaloriesTrackerCtrl">
 
 <div class="please-wait-dialog" ng-hide="vm.appReady">
@@ -56,9 +60,6 @@
         <button type="reset" class="pure-button" ng-click="reset()">Reset</button>
     </div>
 </main>
-
-<script type="text/javascript" data-main="/resources/js/run-calories-tracker"
-        src="/resources/bower_components/requirejs/require.js"></script>
 
 </body>
 </html>
