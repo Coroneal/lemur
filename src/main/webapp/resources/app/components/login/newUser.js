@@ -1,5 +1,6 @@
 angular.module('loginApp')
-    .controller('NewUserCtrl',['$scope', '$timeout', '$http', '$mdSidenav','$log', function ($scope, $timeout, $http, $mdSidenav, $log) {
+    .controller('NewUserCtrl', ['$scope', '$timeout', '$http', '$mdSidenav', '$log','$mdDialog', '$mdMedia',
+        function ($scope, $timeout, $http, $mdSidenav, $log, $mdDialog, $mdMedia) {
 
         $scope.createUser = function (newUsername, newMail, newPassword) {
             console.log('Creating user with username ' + $scope.vm.newUsername + ' and password ' + $scope.vm.newPassword);
@@ -27,7 +28,22 @@ angular.module('loginApp')
             })
                 .then(function (response) {
                     if (response.status == 200) {
-                        $scope.login($scope.vm.newUsername, $scope.vm.newPassword);
+                        $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+                        var confirm = $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#newUser')))
+                            .clickOutsideToClose(true)
+                            .title('User saved')
+                            .textContent('Now you can log in')
+                            .ok('Got it!');
+
+
+                        $mdDialog.show(confirm)
+                            .then(function() {
+                                $scope.vm.username = postData.username;
+                                $scope.vm.password = postData.plainTextPassword;
+                                $scope.closeRightNav();
+                            });
                     }
                     else {
                         $scope.vm.errorMessages = [];
@@ -37,7 +53,7 @@ angular.module('loginApp')
                 });
         };
 
-        $scope.close = function () {
+        $scope.closeRightNav = function () {
             $mdSidenav('right').close()
                 .then(function () {
                     $log.debug("close RIGHT is done");

@@ -10,6 +10,10 @@ angular.module('common', ['ngMaterial'])
 
         $scope.focus = function (fieldName) {
             fieldWithFocus = fieldName;
+            if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
+                $scope.form.username.$setValidity("authenticate", true);
+                $scope.form.password.$setValidity("authenticate", true);
+            }
         };
 
         $scope.blur = function () {

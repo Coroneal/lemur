@@ -47,6 +47,7 @@
                                      ng-messages="form.username.$error">
                                     <div ng-message="required">The username is mandatory</div>
                                     <div ng-message="minlength">must have minimum 6 characters</div>
+                                    <div ng-message="authenticate">Username or password is invalid</div>
                                 </div>
                             </md-input-container>
 
@@ -61,6 +62,7 @@
                                     <div ng-message="required">The password is mandatory</div>
                                     <div ng-message="minlength">must have minimum 6 characters</div>
                                     <div ng-message="pattern">At least one number and uppercase</div>
+                                    <div ng-message="authenticate">Username or password is invalid</div>
                                 </div>
                             </md-input-container>
 

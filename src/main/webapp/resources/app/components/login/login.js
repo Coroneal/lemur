@@ -27,7 +27,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
         $mdThemingProvider.theme('default')
             .primaryPalette('lemurPalette');
     })
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService', function ($scope, $http, $mdSidenav, UserService) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService','$mdToast',
+        function ($scope, $http, $mdSidenav, UserService, $mdToast) {
 
         $scope.toggleRight = buildToggler('right');
 
@@ -59,8 +60,10 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 window.location.replace('/resources/index.html');
             };
             var failFn = function () {
-                $scope.vm.errorMessages = [];
-                $scope.vm.errorMessages.push({description: 'Access denied'});
+
+                $scope.form.username.$setValidity("authenticate", false);
+                $scope.form.password.$setValidity("authenticate", false);
+
             };
             UserService.login($scope.vm.username, $scope.vm.password, successFn, failFn);
         };
