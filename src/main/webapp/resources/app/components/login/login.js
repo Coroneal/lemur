@@ -27,44 +27,44 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
         $mdThemingProvider.theme('default')
             .primaryPalette('lemurPalette');
     })
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService','$mdToast',
-        function ($scope, $http, $mdSidenav, UserService, $mdToast) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService', '$mdToast',
+        function ($scope, $http, $mdSidenav, UserService) {
 
-        $scope.toggleRight = buildToggler('right');
-
-        $scope.isOpenRight = function () {
-            return $mdSidenav('right').isOpen();
-        };
-
-        function buildToggler(navID) {
-            return function () {
-                $mdSidenav(navID)
-                    .toggle()
-                    .then(function () {
-                        console.log("toggle " + navID + " is done");
-                    });
-                $scope.blur();
-            }
-        }
-
-        $scope.onLogin = function () {
-            console.log('Attempting login with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
-
-            $scope.vm.submitted = true;
-
-            if ($scope.form.$invalid) {
-                return;
+            function buildToggler(navID) {
+                return function () {
+                    $mdSidenav(navID)
+                        .toggle()
+                        .then(function () {
+                            console.log("toggle " + navID + " is done");
+                        });
+                    $scope.blur();
+                }
             }
 
-            var successFn = function () {
-                window.location.replace('/resources/index.html');
-            };
-            var failFn = function () {
+            $scope.toggleRight = buildToggler('right');
 
-                $scope.form.username.$setValidity("authenticate", false);
-                $scope.form.password.$setValidity("authenticate", false);
-
+            $scope.isOpenRight = function () {
+                return $mdSidenav('right').isOpen();
             };
-            UserService.login($scope.vm.username, $scope.vm.password, successFn, failFn);
-        };
-    }]);
+
+            $scope.onLogin = function () {
+                console.log('Attempting login with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
+
+                $scope.vm.submitted = true;
+
+                if ($scope.form.$invalid) {
+                    return;
+                }
+
+                var successFn = function () {
+                    window.location.replace('/resources/index.html');
+                };
+                var failFn = function () {
+
+                    $scope.form.username.$setValidity("authenticate", false);
+                    $scope.form.password.$setValidity("authenticate", false);
+
+                };
+                UserService.login($scope.vm.username, $scope.vm.password, successFn, failFn);
+            };
+        }]);

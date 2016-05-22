@@ -33,11 +33,9 @@ angular.module('loginApp')
                         var confirm = $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#newUser')))
                             .clickOutsideToClose(true)
-                            .title('User saved')
+                            .title('User added')
                             .textContent('Now you can log in')
                             .ok('Got it!');
-
-
                         $mdDialog.show(confirm)
                             .then(function() {
                                 $scope.vm.username = postData.username;
