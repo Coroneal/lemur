@@ -30,6 +30,30 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
     .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService', '$mdToast',
         function ($scope, $http, $mdSidenav, UserService) {
 
+            var fieldWithFocus;
+
+            $scope.vm.loginForm = {
+                submitted: false,
+                errorMessages: []
+            };
+
+            $scope.focus = function (fieldName) {
+                fieldWithFocus = fieldName;
+                if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
+                    $scope.loginForm.username.$setValidity("authenticate", true);
+                    $scope.loginForm.password.$setValidity("authenticate", true);
+                }
+            };
+
+            $scope.blur = function () {
+                fieldWithFocus = undefined;
+            };
+
+            $scope.isMessagesVisible = function (fieldName) {
+                return fieldWithFocus === fieldName || $scope.vm.loginForm.submitted;
+            };
+
+
             function buildToggler(navID) {
                 return function () {
                     $mdSidenav(navID)
@@ -50,9 +74,9 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
             $scope.onLogin = function () {
                 console.log('Attempting login with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
 
-                $scope.vm.submitted = true;
+                $scope.vm.loginForm.submitted = true;
 
-                if ($scope.form.$invalid) {
+                if ($scope.loginForm.$invalid) {
                     return;
                 }
 
@@ -61,8 +85,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 };
                 var failFn = function () {
 
-                    $scope.form.username.$setValidity("authenticate", false);
-                    $scope.form.password.$setValidity("authenticate", false);
+                    $scope.loginForm.username.$setValidity("authenticate", false);
+                    $scope.loginForm.password.$setValidity("authenticate", false);
 
                 };
                 UserService.login($scope.vm.username, $scope.vm.password, successFn, failFn);

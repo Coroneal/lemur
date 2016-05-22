@@ -32,7 +32,7 @@
                         <img src="/resources/img/lemur-small-tr-gr.png" alt="lemur">
                     </div>
 
-                    <form ng-submit="onLogin()" name="form" novalidate ng-controller="LoginCtrl">
+                    <form ng-submit="onLogin()" name="loginForm" novalidate ng-controller="LoginCtrl">
 
                         <md-content class="transparent">
 
@@ -41,7 +41,7 @@
                                 <input name="username" ng-focus="focus('username')" ng-blur="blur()"
                                        required ng-minlength="6" ng-model="vm.username">
                                 <div role="alert" ng-show="isMessagesVisible('username')"
-                                     ng-messages="form.username.$error">
+                                     ng-messages="loginForm.username.$error">
                                     <div ng-message="required">The username is mandatory</div>
                                     <div ng-message="minlength">must have minimum 6 characters</div>
                                     <div ng-message="authenticate">Username or password is invalid</div>
@@ -55,7 +55,7 @@
                                        required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
 
                                 <div ng-show="isMessagesVisible('password')"
-                                     ng-messages="form.password.$error" ng-cloak>
+                                     ng-messages="loginForm.password.$error" ng-cloak>
                                     <div ng-message="required">The password is mandatory</div>
                                     <div ng-message="minlength">must have minimum 6 characters</div>
                                     <div ng-message="pattern">At least one number and uppercase</div>

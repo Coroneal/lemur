@@ -1,28 +1,7 @@
 angular.module('common', ['ngMaterial'])
     .controller('BaseFormCtrl', ['$scope', '$http', function ($scope, $http) {
 
-        var fieldWithFocus;
-
-        $scope.vm = {
-            submitted: false,
-            errorMessages: []
-        };
-
-        $scope.focus = function (fieldName) {
-            fieldWithFocus = fieldName;
-            if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
-                $scope.form.username.$setValidity("authenticate", true);
-                $scope.form.password.$setValidity("authenticate", true);
-            }
-        };
-
-        $scope.blur = function () {
-            fieldWithFocus = undefined;
-        };
-
-        $scope.isMessagesVisible = function (fieldName) {
-            return fieldWithFocus === fieldName || $scope.vm.submitted;
-        };
+        $scope.vm = {};
 
         function markAppAsInitialized() {
             if ($scope.vm.appReady == undefined) {
