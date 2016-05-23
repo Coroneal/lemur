@@ -55,7 +55,6 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 return fieldWithFocus === fieldName || $scope.vm.loginForm.submitted;
             };
 
-
             function buildToggler(navID) {
                 return function () {
                     $mdSidenav(navID)
