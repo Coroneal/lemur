@@ -39,7 +39,7 @@
                             <md-input-container class="md-block">
                                 <label>Username</label>
                                 <input name="username" ng-focus="focus('username')" ng-blur="blur()"
-                                       required ng-minlength="6" ng-model="vm.username">
+                                       required ng-minlength="6" ng-model="vm.loginForm.username">
                                 <div role="alert" ng-show="isMessagesVisible('username')"
                                      ng-messages="loginForm.username.$error">
                                     <div ng-message="required">The username is mandatory</div>
@@ -50,7 +50,7 @@
 
                             <md-input-container class="md-block">
                                 <label>Password</label>
-                                <input name="password" ng-model="vm.password" ng-blur="blur()"
+                                <input name="password" ng-model="vm.loginForm.password" ng-blur="blur()"
                                        minlength="6" ng-focus="focus('password')"
                                        required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
 

@@ -12,7 +12,7 @@
                 <md-input-container class="md-block">
                     <label>Username</label>
                     <input name="newUsername" ng-focus="focus('newUsername')" ng-blur="blur()"
-                           required ng-minlength="6" username-available ng-model="vm.newUsername">
+                           required ng-minlength="6" username-available ng-model="vm.registerForm.newUsername">
                     <md-progress-linear ng-if="registerForm.newUsername.$pending" md-mode="query"></md-progress-linear>
                     <div role="alert" ng-show="isMessagesVisible('newUsername')"
                          ng-messages="registerForm.newUsername.$error">
@@ -25,7 +25,7 @@
                 <md-input-container class="md-block">
                     <label>Email</label>
                     <input type="email" name="newEmail" ng-focus="focus('newEmail')" ng-blur="blur()"
-                           required ng-minlength="6" ng-model="vm.newEmail">
+                           required ng-minlength="6" ng-model="vm.registerForm.newEmail">
                     <div role="alert" ng-show="isMessagesVisible('newEmail')"
                          ng-messages="registerForm.newEmail.$error">
                         <div ng-message="required">The email is mandatory</div>
@@ -35,7 +35,7 @@
 
                 <md-input-container class="md-block">
                     <label>Password</label>
-                    <input name="newPassword" ng-model="vm.newPassword" ng-blur="blur()"
+                    <input name="newPassword" ng-model="vm.registerForm.newPassword" ng-blur="blur()"
                            minlength="6" ng-focus="focus('newPassword')"
                            required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  equals="{{vm.repeatedPassword}}">
 
@@ -48,7 +48,7 @@
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Repeat Password</label>
-                    <input name="repeatedPassword" ng-model="vm.repeatedPassword" ng-blur="blur()"
+                    <input name="repeatedPassword" ng-model="vm.registerForm.repeatedPassword" ng-blur="blur()"
                            minlength="6" ng-focus="focus('repeatedPassword')"
                            required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  equals="{{vm.newPassword}}">
 

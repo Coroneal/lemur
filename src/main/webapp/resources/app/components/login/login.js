@@ -37,6 +37,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 errorMessages: []
             };
 
+            $scope.vm.loginFormPristine = angular.copy($scope.vm.loginForm);
+
             $scope.focus = function (fieldName) {
                 fieldWithFocus = fieldName;
                 if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
@@ -89,6 +91,6 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                     $scope.loginForm.password.$setValidity("authenticate", false);
 
                 };
-                UserService.login($scope.vm.username, $scope.vm.password, successFn, failFn);
+                UserService.login($scope.vm.loginForm.username, $scope.vm.loginForm.password, successFn, failFn);
             };
         }]);

@@ -9,6 +9,8 @@ angular.module('loginApp')
                 errorMessages: []
             };
 
+            $scope.vm.registerFormPristine = angular.copy($scope.vm.registerForm);
+
             $scope.focus = function (fieldName) {
                 fieldWithFocus = fieldName;
                 if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
@@ -25,9 +27,16 @@ angular.module('loginApp')
                 return fieldWithFocus === fieldName || $scope.vm.registerForm.submitted;
             };
 
+            $scope.clearRegisterForm = function () {
+                $scope.vm.registerForm = angular.copy($scope.vm.registerFormPristine);
+                $scope.registerForm.$setPristine();
+                $scope.registerForm.$setValidity();
+                $scope.registerForm.$setUntouched();
+            };
 
-            $scope.createUser = function (newUsername, newMail, newPassword) {
-                console.log('Creating user with username ' + $scope.vm.newUsername + ' and password ' + $scope.vm.newPassword);
+
+            $scope.createUser = function () {
+                console.log('Creating user with username ' + $scope.vm.registerForm.newUsername + ' and password ' + $scope.vm.registerForm.newPassword);
 
                 $scope.vm.registerForm.submitted = true;
 
@@ -36,9 +45,9 @@ angular.module('loginApp')
                 }
 
                 var postData = {
-                    username: $scope.vm.newUsername,
-                    plainTextPassword: $scope.vm.newPassword,
-                    email: $scope.vm.newEmail
+                    username: $scope.vm.registerForm.newUsername,
+                    plainTextPassword: $scope.vm.registerForm.newPassword,
+                    email: $scope.vm.registerForm.newEmail
                 };
 
                 $http({
@@ -60,11 +69,13 @@ angular.module('loginApp')
                                 .title('User added')
                                 .textContent('Now you can log in')
                                 .ok('Got it!');
+
                             $mdDialog.show(confirm)
                                 .then(function () {
-                                    $scope.vm.username = postData.username;
-                                    $scope.vm.password = postData.plainTextPassword;
                                     $scope.closeRightNav();
+                                    $scope.clearRegisterForm();
+                                    $scope.vm.loginForm.username = postData.username;
+                                    $scope.vm.loginForm.password = postData.plainTextPassword;
                                 });
                         }
                         else {
