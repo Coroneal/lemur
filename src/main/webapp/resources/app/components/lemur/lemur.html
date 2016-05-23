@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather tracker</title>
+    <link rel="stylesheet" href="/resources/css/lemur.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
+
+    <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
+
+    <script src="/resources/bower_components/angular/angular.js"></script>
+    <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/resources/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/resources/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/resources/bower_components/angular-material/angular-material.js"></script>
+    <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+    <script src="lemur.js"></script>
+</head>
+
+<body>
+
+<header ng-class="{'app-ready': vm.appReady}">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Toolbar with Icon Buttons</span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+</header>
+
+<main class="container not-ready" ng-class="{'app-ready': vm.appReady}" ng-cloak>
+
+
+</main>
+
+</body>
+</html>

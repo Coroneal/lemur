@@ -82,10 +82,9 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 }
 
                 var successFn = function () {
-                    window.location.replace('/resources/index.html');
+                    window.location.replace('/resources/app/components/lemur/lemur.html');
                 };
                 var failFn = function () {
-
                     $scope.loginForm.username.$setValidity("authenticate", false);
                     $scope.loginForm.password.$setValidity("authenticate", false);
 

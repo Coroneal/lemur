@@ -76,6 +76,7 @@ angular.module('loginApp')
                                     $scope.clearRegisterForm();
                                     $scope.vm.loginForm.username = postData.username;
                                     $scope.vm.loginForm.password = postData.plainTextPassword;
+                                    $scope.blur();
                                 });
                         }
                         else {

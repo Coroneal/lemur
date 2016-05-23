@@ -52,7 +52,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/resources/app/components/login/**").permitAll()
-            .antMatchers("/resources/js/run-loggin-app.js").permitAll()
             .antMatchers("/resources/img/**").permitAll()
             .antMatchers("/resources/css/**").permitAll()
             .antMatchers("/resources/bower_components/**").permitAll()
@@ -61,7 +60,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .defaultSuccessUrl("/resources/index.html")
+            .defaultSuccessUrl("/resources/app/components/lemur/lemur.html.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")
