@@ -3,13 +3,10 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Weather tracker</title>
-    <link rel="stylesheet" href="/resources/css/lemur.css">
-    <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
-
+    <title>Lemur</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
-    <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
 
     <script src="/resources/bower_components/angular/angular.js"></script>
     <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
@@ -17,35 +14,85 @@
     <script src="/resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/resources/bower_components/angular-material/angular-material.js"></script>
     <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-    <script src="lemur.js"></script>
+    <script src="/resources/app/components/lemur/lemur.js"></script>
+    <script src="/resources/app/components/lemur/lemurController.js"></script>
+    <script src="/resources/app/components/lemur/app.modules.js"></script>
+    <script src="/resources/app/components/lemur/menu.service.js"></script>
+    <script src="/resources/app/components/lemur/home.controller.js"></script>
+    <script src="/resources/app/components/lemur/menu_toggle.directive.js"></script>
+    <script src="/resources/app/components/lemur/menulink.directive.js"></script>
+    <script src="/resources/app/components/lemur/app.routes.js"></script>
 </head>
 
-<body>
+<body ng-app="lemurApp" layout="column" ng-controller="lemurController as ul" ng-cloak>
+<!-- Container #2 -->
+<div flex layout="row">
 
-<header ng-class="{'app-ready': vm.appReady}">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="Settings">
-                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Toolbar with Icon Buttons</span>
-            </h2>
-            <span flex></span>
-            <md-button class="md-icon-button" aria-label="Favorite">
-                <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-            </md-button>
-        </div>
-    </md-toolbar>
-</header>
+    <!-- Container #1 (see wireframe) -->
+    <md-sidenav class="md-sidenav-left md-whiteframe-1dp" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">
+                <h3>Lemur</h3>
+            </div>
+        </md-toolbar>
 
-<main class="container not-ready" ng-class="{'app-ready': vm.appReady}" ng-cloak>
+        <md-content role="navigation">
+            <ul class="side-menu">
+                <li ng-repeat="section in vm.menu.sections" class="parent-list-item"
+                    ng-class="{'parentActive' : vm.isSectionSelected(section)}">
+                    <h2 class="menu-heading" ng-if="section.type === 'heading'"
+                        id="heading_{{ section.name | nospace }}">
+                        {{section}}
+                    </h2>
+                    <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+                    <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+                </li>
+            </ul>
+        </md-content>
+    </md-sidenav>
+
+    <md-content layout layout-fill layout-padding>
+        <ui-view name="content"></ui-view>
+    </md-content>
+</div>
 
 
-</main>
+<script type="text/javascript">
+
+    angular
+            .module('lemurApp', ['ngMaterial', 'lemur'])
+            .config(function ($mdThemingProvider) {
+
+                $mdThemingProvider.definePalette('lemurPalette', {
+                    '50': '#f9fbe7',
+                    '100': '#f0f4c3',
+                    '200': '#e6ee9c',
+                    '300': '#dce775',
+                    '400': '#d4e157',
+                    '500': '#cddc39',
+                    '600': '#c0ca33',
+                    '700': '#afb42b',
+                    '800': '#9e9d24',
+                    '900': '#827717',
+                    'A100': '#f4ff81',
+                    'A200': '#eeff41',
+                    'A400': '#c6ff00',
+                    'A700': '#aeea00',
+                    'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
+                                                        // on this palette should be dark or light
+                    'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+                        '200', '300', '400', 'A100'],
+                    'contrastLightColors': '900',       // could also specify this if default was 'dark'
+                    'contrastStrongLightColors': '900'
+                });
+
+                $mdThemingProvider.theme('default')
+                        .primaryPalette('lemurPalette');
+
+            });
+
+</script>
 
 </body>
 </html>
