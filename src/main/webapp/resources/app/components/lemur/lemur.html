@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="lemurApp" >
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,84 +15,32 @@
     <script src="/resources/bower_components/angular-material/angular-material.js"></script>
     <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
     <script src="/resources/app/components/lemur/lemur.js"></script>
-    <script src="/resources/app/components/lemur/lemurController.js"></script>
-    <script src="/resources/app/components/lemur/app.modules.js"></script>
-    <script src="/resources/app/components/lemur/menu.service.js"></script>
-    <script src="/resources/app/components/lemur/home.controller.js"></script>
-    <script src="/resources/app/components/lemur/menu_toggle.directive.js"></script>
-    <script src="/resources/app/components/lemur/menulink.directive.js"></script>
-    <script src="/resources/app/components/lemur/app.routes.js"></script>
 </head>
 
-<body ng-app="lemurApp" layout="column" ng-controller="lemurController as ul" ng-cloak>
-<!-- Container #2 -->
-<div flex layout="row">
-
-    <!-- Container #1 (see wireframe) -->
-    <md-sidenav class="md-sidenav-left md-whiteframe-1dp" md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')">
-        <md-toolbar md-scroll-shrink>
-            <div class="md-toolbar-tools">
-                <h3>Lemur</h3>
-            </div>
+<body layout="column">
+<div layout="row" ng-controller="menuCtrl" flex>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-lg')">
+        <md-toolbar class="md-medium-tall">
+            <span>Toolbar</span>
         </md-toolbar>
-
-        <md-content role="navigation">
-            <ul class="side-menu">
-                <li ng-repeat="section in vm.menu.sections" class="parent-list-item"
-                    ng-class="{'parentActive' : vm.isSectionSelected(section)}">
-                    <h2 class="menu-heading" ng-if="section.type === 'heading'"
-                        id="heading_{{ section.name | nospace }}">
-                        {{section}}
-                    </h2>
-                    <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
-                    <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
-                </li>
-            </ul>
+        <md-content layout="column" flex>
+            <span>Your sidenav</span>
         </md-content>
+
     </md-sidenav>
+    <div layout="column" flex md-theme="green" id="content">
+        <md-toolbar layout="row">
+            <div class="md-toolbar-tools">
+                <!-- Add a toggleMenu function to your menuCtrl controller with the following in it
+                  $mdSidenav('left').toggle(); -->
+                <i class="fa fa-bars pointer" ng-click="toggleMenu()" hide-gt-lg></i>
+                <h1 flex>Your App</h1>
+            </div>
 
-    <md-content layout layout-fill layout-padding>
-        <ui-view name="content"></ui-view>
-    </md-content>
+        </md-toolbar>
+        <md-content ui-view layout="column" flex></md-content>
+    </div>
 </div>
-
-
-<script type="text/javascript">
-
-    angular
-            .module('lemurApp', ['ngMaterial', 'lemur'])
-            .config(function ($mdThemingProvider) {
-
-                $mdThemingProvider.definePalette('lemurPalette', {
-                    '50': '#f9fbe7',
-                    '100': '#f0f4c3',
-                    '200': '#e6ee9c',
-                    '300': '#dce775',
-                    '400': '#d4e157',
-                    '500': '#cddc39',
-                    '600': '#c0ca33',
-                    '700': '#afb42b',
-                    '800': '#9e9d24',
-                    '900': '#827717',
-                    'A100': '#f4ff81',
-                    'A200': '#eeff41',
-                    'A400': '#c6ff00',
-                    'A700': '#aeea00',
-                    'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                                        // on this palette should be dark or light
-                    'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-                        '200', '300', '400', 'A100'],
-                    'contrastLightColors': '900',       // could also specify this if default was 'dark'
-                    'contrastStrongLightColors': '900'
-                });
-
-                $mdThemingProvider.theme('default')
-                        .primaryPalette('lemurPalette');
-
-            });
-
-</script>
-
 </body>
+
 </html>
