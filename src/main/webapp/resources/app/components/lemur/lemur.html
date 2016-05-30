@@ -19,6 +19,20 @@
 <body>
 <div layout="row" ng-controller="AppCtrl">
     <section layout="column" flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" ng-click="toggleFilter('left')">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <h2>
+                    <span>Heading</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="toggleFilter('left')">
+                    <i class="material-icons">power_settings_new</i>
+                </md-button>
+            </div>
+        </md-toolbar>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-sticky-header" md-component-id="left" md-is-locked-open="false">
             <md-toolbar layout="row">
                 <h1 class="md-toolbar-tools">Menu</h1>
