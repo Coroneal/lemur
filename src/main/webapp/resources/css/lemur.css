@@ -5,6 +5,21 @@
 .app-ready {
     opacity: 1;
 }
+.mainLoginContainer {
+    background: url(/resources/img/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+.loginContainer {
+    padding-top: 5%;
+}
+
+.transparent {
+    background-color: transparent !important;
+}
 
 .md-sticky-header {
     overflow: hidden;
