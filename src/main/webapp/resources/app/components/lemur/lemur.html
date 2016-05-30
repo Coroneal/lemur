@@ -1,46 +1,47 @@
 <!DOCTYPE html>
-<html ng-app="lemurApp" >
+<html ng-app="lemurApp">
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lemur</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
-
     <script src="/resources/bower_components/angular/angular.js"></script>
     <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/resources/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/resources/bower_components/angular-material/angular-material.js"></script>
     <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-    <script src="/resources/app/components/lemur/lemur.js"></script>
+    <script src="/resources/app/components /lemur/lemur.js"></script>
 </head>
-
-<body layout="column">
-<div layout="row" ng-controller="menuCtrl" flex>
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-lg')">
-        <md-toolbar class="md-medium-tall">
-            <span>Toolbar</span>
-        </md-toolbar>
-        <md-content layout="column" flex>
-            <span>Your sidenav</span>
-        </md-content>
-
-    </md-sidenav>
-    <div layout="column" flex md-theme="green" id="content">
-        <md-toolbar layout="row">
-            <div class="md-toolbar-tools">
-                <!-- Add a toggleMenu function to your menuCtrl controller with the following in it
-                  $mdSidenav('left').toggle(); -->
-                <i class="fa fa-bars pointer" ng-click="toggleMenu()" hide-gt-lg></i>
-                <h1 flex>Your App</h1>
+<body>
+<div layout="row" ng-controller="AppCtrl">
+    <section layout="column" flex>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-sticky-header" md-component-id="left" md-is-locked-open="false">
+            <md-toolbar layout="row">
+                <h1 class="md-toolbar-tools">Menu</h1>
+                <span flex></span>
+                <md-button class="md-icon-button md-primary" ng-click="closeFilter('left')" >
+                    <i class="material-icons">arrow_back</i>
+                </md-button>
+            </md-toolbar>
+            <md-content layout-padding>
+                <md-subheader class="md-no-sticky">Interests</md-subheader>
+                <md-list-item ng-repeat="topping in toppings">
+                    <p> [[ topping.name ]] </p>
+                    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-content>
+        </md-sidenav>
+        <md-content flex layout-padding>
+            <div layout="row">
+                <md-button flex class="md-primary md-raised" ng-click="toggleFilter('left')">Show sidenav</md-button>
             </div>
-
-        </md-toolbar>
-        <md-content ui-view layout="column" flex></md-content>
-    </div>
+        </md-content>
+    </section>
 </div>
 </body>
-
 </html>

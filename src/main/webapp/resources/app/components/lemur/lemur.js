@@ -1,8 +1,8 @@
-(function(){
+(function () {
     'use strict';
 
     // Prepare the 'users' module for subsequent registration of controllers and delegates
-    angular.module('lemurApp', [ 'ngMaterial' ])
+    angular.module('lemurApp', ['ngMaterial'])
         .config(function ($mdThemingProvider) {
 
             $mdThemingProvider.definePalette('lemurPalette', {
@@ -31,7 +31,33 @@
             $mdThemingProvider.theme('default')
                 .primaryPalette('lemurPalette');
 
+        })
+        .config(function ($interpolateProvider) {
+            $interpolateProvider.startSymbol('[[').endSymbol(']]');
+        })
+        .controller('AppCtrl', function ($scope, $window, $log, $mdSidenav) {
+
+            $scope.toppings = [
+                {name: 'Angular JS', wanted: true},
+                {name: 'jQuery', wanted: false},
+                {name: 'Angular Material', wanted: true},
+
+            ];
+
+            $scope.toggleFilter = function (sideId) {
+
+                $mdSidenav(sideId)
+                    .toggle()
+                    .then(function () {
+                        $log.debug("toggle " + sideId + " is done");
+                    });
+
+            };
+            $scope.closeFilter = function (sideId) {
+                $mdSidenav(sideId).close()
+                    .then(function () {
+                        $log.debug("close RIGHT is done");
+                    });
+            };
         });
-
-
 })();
