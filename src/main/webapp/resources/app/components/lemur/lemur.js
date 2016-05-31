@@ -2,7 +2,7 @@
     'use strict';
 
     // Prepare the 'users' module for subsequent registration of controllers and delegates
-    angular.module('lemurApp', ['ngMaterial'])
+    angular.module('lemurApp', ['ngMaterial','spring-security-csrf-token-interceptor'])
         .config(function ($mdThemingProvider) {
 
             $mdThemingProvider.definePalette('lemurPalette', {
@@ -35,29 +35,44 @@
         .config(function ($interpolateProvider) {
             $interpolateProvider.startSymbol('[[').endSymbol(']]');
         })
-        .controller('AppCtrl', function ($scope, $window, $log, $mdSidenav) {
+        .config(function ($httpProvider) {
+            $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+        })
+        .controller('AppCtrl', ['$scope', '$window', '$log', '$mdSidenav', '$http',
+            function ($scope, $window, $log, $mdSidenav, $http) {
 
-            $scope.toppings = [
-                {name: 'Angular JS', wanted: true},
-                {name: 'jQuery', wanted: false},
-                {name: 'Angular Material', wanted: true},
+                $scope.toppings = [
+                    {name: 'Angular JS', wanted: true},
+                    {name: 'jQuery', wanted: false},
+                    {name: 'Angular Material', wanted: true},
 
-            ];
+                ];
 
-            $scope.toggleFilter = function (sideId) {
+                $scope.toggleFilter = function (sideId) {
 
-                $mdSidenav(sideId)
-                    .toggle()
-                    .then(function () {
-                        $log.debug("toggle " + sideId + " is done");
-                    });
+                    $mdSidenav(sideId)
+                        .toggle()
+                        .then(function () {
+                            $log.debug("toggle " + sideId + " is done");
+                        });
 
-            };
-            $scope.closeFilter = function (sideId) {
-                $mdSidenav(sideId).close()
-                    .then(function () {
-                        $log.debug("close RIGHT is done");
-                    });
-            };
-        });
+                };
+                $scope.closeFilter = function (sideId) {
+                    $mdSidenav(sideId).close()
+                        .then(function () {
+                            $log.debug("close RIGHT is done");
+                        });
+                };
+                $scope.logout = function () {
+                    $http.post('/logout', {})
+                        .then(function (response) {
+                            if (response.status == 200) {
+                                window.location.reload();
+                            }
+                            else {
+                                console.log("Logout failed!");
+                            }
+                        });
+                };
+            }]);
 })();

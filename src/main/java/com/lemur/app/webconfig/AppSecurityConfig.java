@@ -60,7 +60,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .defaultSuccessUrl("/resources/app/components/lemur/lemur.html.html")
+            .defaultSuccessUrl("/resources/app/components/lemur/lemur.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")
