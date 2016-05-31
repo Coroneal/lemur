@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
+    <link rel="stylesheet" href="/resources/bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.css">
+
     <script src="/resources/bower_components/angular/angular.js"></script>
     <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/resources/bower_components/angular-aria/angular-aria.js"></script>
@@ -15,6 +17,7 @@
     <script src="/resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/resources/bower_components/angular-material/angular-material.js"></script>
     <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+    <script src="/resources/bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.js"></script>
     <script src="/resources/app/components /lemur/lemur.js"></script>
 </head>
 <body>
@@ -31,13 +34,62 @@
                     <span>Home</span>
                 </h2>
                 <span flex></span>
-                <md-button class="md-icon-button" show-gt-sm  ng-click="logout()">
+                <md-button class="md-icon-button" show-gt-sm ng-click="logout()">
                     <i class="material-icons">power_settings_new</i>
                 </md-button>
             </div>
         </md-toolbar>
+        <!--<md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2"-->
+                    <!--md-component-id="left">-->
+
+            <!--<div layout="row" layout-padding>-->
+                <!--<h1 class="md-title">olimou/material-sidenav-menu</h1>-->
+            <!--</div>-->
+
+            <!--<md-divider></md-divider>-->
+
+            <!--<md-menu-sidenav>-->
+                <!--<md-menu-sidenav-item>-->
+                    <!--<md-menu-sidenav-title>-->
+                        <!--<md-toogle-menu layout="row" flex>-->
+                            <!--<md-icon flex="15">face</md-icon>-->
+                            <!--<h1 class="md-body-2" flex>Mapa</h1>-->
+                        <!--</md-toogle-menu>-->
+
+                        <!--<md-icon flex="15">pause</md-icon>-->
+                    <!--</md-menu-sidenav-title>-->
+
+                    <!--<md-menu-sidenav-content>-->
+                        <!--<md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>-->
+                        <!--<md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>-->
+                        <!--<md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>-->
+                    <!--</md-menu-sidenav-content>-->
+                <!--</md-menu-sidenav-item>-->
+
+                <!--<md-divider></md-divider>-->
+
+                <!--<md-menu-sidenav-item>-->
+                    <!--<md-menu-sidenav-title>-->
+                        <!--<md-toogle-menu layout="row" flex>-->
+                            <!--<md-icon flex="15">face</md-icon>-->
+                            <!--<h1 class="md-body-2" flex>Mapa</h1>-->
+                            <!--<md-icon flex="15">pause</md-icon>-->
+                        <!--</md-toogle-menu>-->
+
+                    <!--</md-menu-sidenav-title>-->
+
+                    <!--<md-menu-sidenav-content>-->
+                        <!--<md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>-->
+                        <!--<md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>-->
+                        <!--<md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>-->
+                        <!--<md-menu-sidenav-subitem>Item 4</md-menu-sidenav-subitem>-->
+                    <!--</md-menu-sidenav-content>-->
+                <!--</md-menu-sidenav-item>-->
+            <!--</md-menu-sidenav>-->
+        <!--</md-sidenav>-->
         <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-sticky-header" md-component-id="left"
                     md-is-locked-open="false">
+
             <md-toolbar layout="row">
                 <h1 class="md-toolbar-tools">Menu</h1>
                 <span flex></span>
@@ -45,13 +97,47 @@
                     <i class="material-icons">arrow_back</i>
                 </md-button>
             </md-toolbar>
-            <md-content layout-padding>
-                <md-subheader class="md-no-sticky">Interests</md-subheader>
-                <md-list-item ng-repeat="topping in toppings">
-                    <p> [[ topping.name ]] </p>
-                    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
-                </md-list-item>
-                <md-divider></md-divider>
+            <md-content layout-padding role="navigation">
+
+                <md-menu-sidenav>
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" flex>
+                                <md-icon flex="15">face</md-icon>
+                                <h1 class="md-body-2" flex>Mapa</h1>
+                            </md-toogle-menu>
+
+                            <md-icon flex="15">pause</md-icon>
+                        </md-menu-sidenav-title>
+
+                        <md-menu-sidenav-content>
+                            <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
+                        </md-menu-sidenav-content>
+                    </md-menu-sidenav-item>
+
+                    <md-divider></md-divider>
+
+                    <md-menu-sidenav-item>
+                        <md-menu-sidenav-title>
+                            <md-toogle-menu layout="row" flex>
+                                <md-icon flex="15">face</md-icon>
+                                <h1 class="md-body-2" flex>Mapa</h1>
+                                <md-icon flex="15">pause</md-icon>
+                            </md-toogle-menu>
+
+                        </md-menu-sidenav-title>
+
+                        <md-menu-sidenav-content>
+                            <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem>Item 4</md-menu-sidenav-subitem>
+                        </md-menu-sidenav-content>
+                    </md-menu-sidenav-item>
+                </md-menu-sidenav>
+
             </md-content>
         </md-sidenav>
         <md-content flex layout-padding>

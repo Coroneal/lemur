@@ -2,7 +2,7 @@
     'use strict';
 
     // Prepare the 'users' module for subsequent registration of controllers and delegates
-    angular.module('lemurApp', ['ngMaterial','spring-security-csrf-token-interceptor'])
+    angular.module('lemurApp', ['ngMaterial','ngMenuSidenav','spring-security-csrf-token-interceptor'])
         .config(function ($mdThemingProvider) {
 
             $mdThemingProvider.definePalette('lemurPalette', {
@@ -40,6 +40,14 @@
         })
         .controller('AppCtrl', ['$scope', '$window', '$log', '$mdSidenav', '$http',
             function ($scope, $window, $log, $mdSidenav, $http) {
+
+
+                $scope.index = 0;
+
+                $scope.toggleSidenav = function (menuId) {
+                    $mdSidenav(menuId).toggle();
+                };
+
 
                 $scope.toppings = [
                     {name: 'Angular JS', wanted: true},
