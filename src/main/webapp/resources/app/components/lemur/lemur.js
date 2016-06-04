@@ -60,28 +60,20 @@
                 ssSideNavSectionsProvider) {
 
                 ssSideNavSectionsProvider.initWithSections([{
-                    id:     'toogle_1',
-                    name:   'Section Heading 1',
-                    type:   'heading',
-                    children: [{
-                        name:   'Toogle 1',
-                        type:   'toggle',
-                        pages:  [{
-                            id:     'toggle_item_1',
-                            name:   'item 1',
-                            state:  'common.toggle.item1'
-                        }, {
-                            id:     'toggle_item_2',
-                            name:   'item 2',
-                            state:  'common.toggle.item2'
-                        }]
-                    }]
+                    id: 'link_1',
+                    name: 'Link 1',
+                    state: 'common.link1',
+                    type: 'link'
                 }, {
-                    id:         'link_1',
-                    name:       'Simple link to Index state',
-                    state:      'common.index',
-                    type:       'link',
-                    hidden: true // show menu ('true' for hide menu)
+                    id: 'link_2',
+                    name: 'Link 2',
+                    state: 'common.link2',
+                    type: 'link'
+                }, {
+                    id: 'link_3',
+                    name: 'Link 3',
+                    state: 'common.link3',
+                    type: 'link'
                 }]);
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
             }
