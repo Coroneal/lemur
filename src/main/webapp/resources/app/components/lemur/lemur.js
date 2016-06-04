@@ -2,7 +2,21 @@
     'use strict';
 
     // Prepare the 'users' module for subsequent registration of controllers and delegates
-    angular.module('lemurApp', ['ngMaterial','ngMenuSidenav','spring-security-csrf-token-interceptor'])
+    angular.module('lemurApp',
+        [
+            'ngMaterial',
+            'ngAnimate',
+            'ngAria',
+            'ngCookies',
+            'ngMessages',
+            'ngResource',
+            'ngRoute',
+            'ngSanitize',
+            'ngTouch',
+            'ui.router',
+            'sasrio.angular-material-sidenav',
+            'spring-security-csrf-token-interceptor'
+        ])
         .config(function ($mdThemingProvider) {
 
             $mdThemingProvider.definePalette('lemurPalette', {
@@ -32,30 +46,89 @@
                 .primaryPalette('lemurPalette');
 
         })
+        .config([
+            '$mdThemingProvider',
+            '$locationProvider',
+            '$urlRouterProvider',
+            '$stateProvider',
+            'ssSideNavSectionsProvider',
+            function (
+                $mdThemingProvider,
+                $locationProvider,
+                $urlRouterProvider,
+                $stateProvider,
+                ssSideNavSectionsProvider) {
+
+                ssSideNavSectionsProvider.initWithSections([{
+                    id:     'toogle_1',
+                    name:   'Section Heading 1',
+                    type:   'heading',
+                    children: [{
+                        name:   'Toogle 1',
+                        type:   'toggle',
+                        pages:  [{
+                            id:     'toggle_item_1',
+                            name:   'item 1',
+                            state:  'common.toggle.item1'
+                        }, {
+                            id:     'toggle_item_2',
+                            name:   'item 2',
+                            state:  'common.toggle.item2'
+                        }]
+                    }]
+                }, {
+                    id:         'link_1',
+                    name:       'Simple link to Index state',
+                    state:      'common.index',
+                    type:       'link',
+                    hidden: true // show menu ('true' for hide menu)
+                }]);
+                ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
+            }
+        ])
         .config(function ($interpolateProvider) {
             $interpolateProvider.startSymbol('[[').endSymbol(']]');
         })
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
-        .controller('AppCtrl', ['$scope', '$window', '$log', '$mdSidenav', '$http',
-            function ($scope, $window, $log, $mdSidenav, $http) {
+        .controller('AppCtrl', ['$scope','$timeout', '$window', '$log', '$mdSidenav', '$http','ssSideNav',
+            function ($scope,$timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
+                $scope.menu = ssSideNav;
 
-                $scope.index = 0;
+                // Show or Hide menu
+                ssSideNav.setVisible('link_1');
+                ssSideNav.setVisibleFor([{
+                    id: 'toggle_item_1',
+                    value: true
+                }, {
+                    id: 'link_1',
+                    value: false
+                }]);
 
-                $scope.toggleSidenav = function (menuId) {
-                    $mdSidenav(menuId).toggle();
-                };
+                $timeout(function () {
+                    ssSideNav.setVisible('toogle_2', false);
+                });
 
-
-                $scope.toppings = [
-                    {name: 'Angular JS', wanted: true},
-                    {name: 'jQuery', wanted: false},
-                    {name: 'Angular Material', wanted: true},
-
-                ];
-
+                $timeout(function () {
+                    // force selection on child dropdown menu item and select its state too.
+                    ssSideNav.forceSelectionWithId('toogle_1_link_2');
+                }, 1000 * 3);
+                //$scope.index = 0;
+                //
+                //$scope.toggleSidenav = function (menuId) {
+                //    $mdSidenav(menuId).toggle();
+                //};
+                //
+                //
+                //$scope.toppings = [
+                //    {name: 'Angular JS', wanted: true},
+                //    {name: 'jQuery', wanted: false},
+                //    {name: 'Angular Material', wanted: true},
+                //
+                //];
+                //
                 $scope.toggleFilter = function (sideId) {
 
                     $mdSidenav(sideId)

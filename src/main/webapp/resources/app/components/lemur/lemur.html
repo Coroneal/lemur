@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
-    <link rel="stylesheet" href="/resources/bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.css">
+    <link rel="stylesheet" href="/resources/bower_components/angular-material-sidenav/angular-material-sidenav.css">
 
     <script src="/resources/bower_components/angular/angular.js"></script>
     <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
@@ -17,7 +17,17 @@
     <script src="/resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/resources/bower_components/angular-material/angular-material.js"></script>
     <script src="/resources/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-    <script src="/resources/bower_components/angular-material-sidenav-menu/material-menu-sidenav.min.js"></script>
+
+
+    <script src="/resources/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/resources/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/resources/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/resources/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/resources/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+
+
+    <script src="/resources/bower_components/angular-material-sidenav/angular-material-sidenav.js"></script>
     <script src="/resources/app/components /lemur/lemur.js"></script>
 </head>
 <body>
@@ -39,6 +49,21 @@
                 </md-button>
             </div>
         </md-toolbar>
+        <!--<md-sidenav class="md-sidenav-left md-whiteframe-z2"-->
+                    <!--md-component-id="left"-->
+                    <!--md-is-locked-open="$mdMedia('gt-sm')">-->
+            <md-sidenav  layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+
+            <!--<header class="nav-header" ss-style-color="{'background-color': 'primary.default'}">-->
+                <!--<a ng-href="#/" class="logo">-->
+                    <!--<h1 class="md-heading">Angular Material Sidenav</h1>-->
+                <!--</a>-->
+            <!--</header>-->
+
+            <md-content flex role="navigation" ss-style-color="{'background-color': 'primary.default'}">
+                <ss-sidenav flex menu="menu"></ss-sidenav>
+            </md-content>
+        </md-sidenav>
         <!--<md-sidenav style="overflow-y: scroll" layout="column" class="md-sidenav-left md-whiteframe-z2"-->
                     <!--md-component-id="left">-->
 
@@ -87,59 +112,59 @@
                 <!--</md-menu-sidenav-item>-->
             <!--</md-menu-sidenav>-->
         <!--</md-sidenav>-->
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-sticky-header" md-component-id="left"
-                    md-is-locked-open="false">
+        <!--<md-sidenav class="md-sidenav-left md-whiteframe-z2 md-sticky-header" md-component-id="left"-->
+                    <!--md-is-locked-open="false">-->
 
-            <md-toolbar layout="row">
-                <h1 class="md-toolbar-tools">Menu</h1>
-                <span flex></span>
-                <md-button class="md-icon-button md-primary" ng-click="closeFilter('left')">
-                    <i class="material-icons">arrow_back</i>
-                </md-button>
-            </md-toolbar>
-            <md-content layout-padding role="navigation">
+            <!--<md-toolbar layout="row">-->
+                <!--<h1 class="md-toolbar-tools">Menu</h1>-->
+                <!--<span flex></span>-->
+                <!--<md-button class="md-icon-button md-primary" ng-click="closeFilter('left')">-->
+                    <!--<i class="material-icons">arrow_back</i>-->
+                <!--</md-button>-->
+            <!--</md-toolbar>-->
+            <!--<md-content layout-padding role="navigation">-->
 
-                <md-menu-sidenav>
-                    <md-menu-sidenav-item>
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" flex>
-                                <md-icon flex="15">face</md-icon>
-                                <h1 class="md-body-2" flex>Mapa</h1>
-                            </md-toogle-menu>
+                <!--<md-menu-sidenav>-->
+                    <!--<md-menu-sidenav-item>-->
+                        <!--<md-menu-sidenav-title>-->
+                            <!--<md-toogle-menu layout="row" flex>-->
+                                <!--<md-icon flex="15">face</md-icon>-->
+                                <!--<h1 class="md-body-2" flex>Mapa</h1>-->
+                            <!--</md-toogle-menu>-->
 
-                            <md-icon flex="15">pause</md-icon>
-                        </md-menu-sidenav-title>
+                            <!--<md-icon flex="15">pause</md-icon>-->
+                        <!--</md-menu-sidenav-title>-->
 
-                        <md-menu-sidenav-content>
-                            <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
-                        </md-menu-sidenav-content>
-                    </md-menu-sidenav-item>
+                        <!--<md-menu-sidenav-content>-->
+                            <!--<md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>-->
+                            <!--<md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>-->
+                            <!--<md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>-->
+                        <!--</md-menu-sidenav-content>-->
+                    <!--</md-menu-sidenav-item>-->
 
-                    <md-divider></md-divider>
+                    <!--<md-divider></md-divider>-->
 
-                    <md-menu-sidenav-item>
-                        <md-menu-sidenav-title>
-                            <md-toogle-menu layout="row" flex>
-                                <md-icon flex="15">face</md-icon>
-                                <h1 class="md-body-2" flex>Mapa</h1>
-                                <md-icon flex="15">pause</md-icon>
-                            </md-toogle-menu>
+                    <!--<md-menu-sidenav-item>-->
+                        <!--<md-menu-sidenav-title>-->
+                            <!--<md-toogle-menu layout="row" flex>-->
+                                <!--<md-icon flex="15">face</md-icon>-->
+                                <!--<h1 class="md-body-2" flex>Mapa</h1>-->
+                                <!--<md-icon flex="15">pause</md-icon>-->
+                            <!--</md-toogle-menu>-->
 
-                        </md-menu-sidenav-title>
+                        <!--</md-menu-sidenav-title>-->
 
-                        <md-menu-sidenav-content>
-                            <md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>
-                            <md-menu-sidenav-subitem>Item 4</md-menu-sidenav-subitem>
-                        </md-menu-sidenav-content>
-                    </md-menu-sidenav-item>
-                </md-menu-sidenav>
+                        <!--<md-menu-sidenav-content>-->
+                            <!--<md-menu-sidenav-subitem>Item 1</md-menu-sidenav-subitem>-->
+                            <!--<md-menu-sidenav-subitem>Item 2</md-menu-sidenav-subitem>-->
+                            <!--<md-menu-sidenav-subitem>Item 3</md-menu-sidenav-subitem>-->
+                            <!--<md-menu-sidenav-subitem>Item 4</md-menu-sidenav-subitem>-->
+                        <!--</md-menu-sidenav-content>-->
+                    <!--</md-menu-sidenav-item>-->
+                <!--</md-menu-sidenav>-->
 
-            </md-content>
-        </md-sidenav>
+            <!--</md-content>-->
+        <!--</md-sidenav>-->
         <md-content flex layout-padding>
             <!--TODO: content goes here-->
         </md-content>
