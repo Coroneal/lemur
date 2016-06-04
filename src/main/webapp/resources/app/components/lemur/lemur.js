@@ -89,16 +89,6 @@
 
                 $scope.menu = ssSideNav;
 
-                // Show or Hide menu
-                ssSideNav.setVisible('link_1');
-                ssSideNav.setVisibleFor([{
-                    id: 'toggle_item_1',
-                    value: true
-                }, {
-                    id: 'link_1',
-                    value: false
-                }]);
-
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
                 });
@@ -107,20 +97,6 @@
                     // force selection on child dropdown menu item and select its state too.
                     ssSideNav.forceSelectionWithId('toogle_1_link_2');
                 }, 1000 * 3);
-                //$scope.index = 0;
-                //
-                //$scope.toggleSidenav = function (menuId) {
-                //    $mdSidenav(menuId).toggle();
-                //};
-                //
-                //
-                //$scope.toppings = [
-                //    {name: 'Angular JS', wanted: true},
-                //    {name: 'jQuery', wanted: false},
-                //    {name: 'Angular Material', wanted: true},
-                //
-                //];
-                //
                 $scope.toggleFilter = function (sideId) {
 
                     $mdSidenav(sideId)
