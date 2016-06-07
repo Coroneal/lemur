@@ -44,7 +44,7 @@
 
 
             $mdThemingProvider.theme('default')
-                .primaryPalette('lemurPalette',{
+                .primaryPalette('lemurPalette', {
                     'hue-3': '900' // use shade A100 for the <code>md-hue-3</code> class
                 })
                 .accentPalette('grey')
@@ -58,12 +58,33 @@
             '$urlRouterProvider',
             '$stateProvider',
             'ssSideNavSectionsProvider',
-            function (
-                $mdThemingProvider,
-                $locationProvider,
-                $urlRouterProvider,
-                $stateProvider,
-                ssSideNavSectionsProvider) {
+            function ($mdThemingProvider,
+                      $locationProvider,
+                      $urlRouterProvider,
+                      $stateProvider,
+                      ssSideNavSectionsProvider) {
+
+                $stateProvider.state({
+                    name: 'common.link1',
+                    url: '/link1',
+                    templateUrl: 'views/default.html',
+                    controller: function ($scope) {
+                        $scope.model = {
+                            title: 'Hello Link 1'
+                        };
+                    }
+                });
+
+                $stateProvider.state({
+                    name: 'common.link2',
+                    url: '/link2',
+                    templateUrl: 'views/default.html',
+                    controller: function ($scope) {
+                        $scope.model = {
+                            title: 'Hello Link 2'
+                        };
+                    }
+                });
 
                 ssSideNavSectionsProvider.initWithSections([{
                     id: 'link_1',
@@ -75,13 +96,13 @@
                     name: 'Link 2',
                     state: 'common.link2',
                     type: 'link'
-                }, {
-                    id: 'link_3',
-                    name: 'Link 3',
-                    state: 'common.link3',
-                    type: 'link'
                 }]);
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
+
+                $urlRouterProvider.otherwise(function () {
+                    return '/';
+                });
+
             }
         ])
         .config(function ($interpolateProvider) {
@@ -90,8 +111,8 @@
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
-        .controller('AppCtrl', ['$scope','$timeout', '$window', '$log', '$mdSidenav', '$http','ssSideNav',
-            function ($scope,$timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
+        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav',
+            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
                 $scope.menu = ssSideNav;
 
