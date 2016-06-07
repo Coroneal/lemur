@@ -42,8 +42,14 @@
                 'contrastStrongLightColors': '900'
             });
 
+
             $mdThemingProvider.theme('default')
-                .primaryPalette('lemurPalette');
+                .primaryPalette('lemurPalette',{
+                    'hue-3': '900' // use shade A100 for the <code>md-hue-3</code> class
+                })
+                .accentPalette('grey')
+                .warnPalette('red')
+                .backgroundPalette('grey');
 
         })
         .config([
