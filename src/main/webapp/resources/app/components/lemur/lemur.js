@@ -64,25 +64,56 @@
                       $stateProvider,
                       ssSideNavSectionsProvider) {
 
+
+                $urlRouterProvider.otherwise(function () {
+                    return '/';
+                });
+
+
+                $stateProvider.state({
+                    name: 'lemur',
+                    abstract: true,
+                    templateUrl: 'lemur.html',
+                    controller: 'AppCtrl'
+                });
+
+                $stateProvider.state({
+                    name: 'lemur.home',
+                    url: '/',
+                    templateUrl: 'home/home.html',
+                    //template: '<h1>{{title}}</h1>',
+                    controller: function ($scope) {
+                        $scope.title = 'Hello Link 1';
+                    }
+                });
+
+
+                $stateProvider.state({
+                    name: 'home.list',
+                    url: '/home/list',
+                    templateUrl: 'home/home-list.html',
+                    controller: function ($scope) {
+                        $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
+                    }
+                });
+
                 $stateProvider.state({
                     name: 'common.link1',
                     url: '/link1',
-                    templateUrl: 'views/default.html',
+                    templateUrl: 'lemur.html',
+                    template: '<h1>{{title}}</h1>',
                     controller: function ($scope) {
-                        $scope.model = {
-                            title: 'Hello Link 1'
-                        };
+                        $scope.title = 'Hello Link 1';
                     }
                 });
 
                 $stateProvider.state({
                     name: 'common.link2',
                     url: '/link2',
-                    templateUrl: 'views/default.html',
+                    templateUrl: 'lemur.html',
+                    template: '<h1>{{title}}</h1>',
                     controller: function ($scope) {
-                        $scope.model = {
-                            title: 'Hello Link 2'
-                        };
+                        $scope.title = 'Hello Link 2';
                     }
                 });
 
@@ -92,6 +123,11 @@
                     state: 'common.link1',
                     type: 'link'
                 }, {
+                    id: 'home',
+                    name: 'home',
+                    state: 'lemur.home',
+                    type: 'link'
+                }, {
                     id: 'link_2',
                     name: 'Link 2',
                     state: 'common.link2',
@@ -99,9 +135,6 @@
                 }]);
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
 
-                $urlRouterProvider.otherwise(function () {
-                    return '/';
-                });
 
             }
         ])
@@ -115,6 +148,7 @@
             function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
                 $scope.menu = ssSideNav;
+                $scope.title = 'Home';
 
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
@@ -150,5 +184,12 @@
                             }
                         });
                 };
-            }]);
+            }])
+        .run(['$rootScope', '$state', '$stateParams',
+            function ($rootScope, $state, $stateParams) {
+                $rootScope.$state = $state;
+                $rootScope.$stateParams = $stateParams;
+            }
+        ])
+    ;
 })();

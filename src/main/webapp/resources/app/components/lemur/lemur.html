@@ -31,7 +31,7 @@
 <body>
 <div layout="row" ng-controller="AppCtrl">
     <section layout="column" flex>
-        <md-toolbar >
+        <md-toolbar>
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" show-gt-sm ng-click="toggleFilter('left')">
                     <i class="material-icons">menu</i>
@@ -39,7 +39,7 @@
                 <span flex></span>
                 <img src="/resources/img/foot-sm.png" alt="lemur">
                 <h2>
-                    <span>Home</span>
+                    <span>{{title}}</span>
                 </h2>
                 <span flex></span>
                 <md-button class="md-icon-button" show-gt-sm ng-click="logout()">
@@ -60,6 +60,9 @@
             </md-content>
         </md-sidenav>
         <md-content flex layout-padding>
+            <div layout="column" flex role="main">
+                <div ui-view layout="column"></div>
+            </div>
             <!--TODO: content goes here-->
         </md-content>
     </section>
