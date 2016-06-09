@@ -81,18 +81,14 @@
                     name: 'lemur.home',
                     url: '/',
                     templateUrl: 'home/home.html',
-                    controller: function ($scope) {
-                        $scope.title = 'Hello Link 1';
-                    }
+                    controller: 'HomeCtrl'
                 });
 
                 $stateProvider.state({
                     name: 'lemur.about',
                     url: '/',
                     templateUrl: 'about/about.html',
-                    controller: function ($scope) {
-                        $scope.title = 'Hello Link 2';
-                    }
+                    controller: 'AboutCtrl'
                 });
 
 
@@ -104,26 +100,6 @@
                         $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
                     }
                 });
-
-                //$stateProvider.state({
-                //    name: 'common.link1',
-                //    url: '/link1',
-                //    templateUrl: 'lemur.html',
-                //    template: '<h1>{{title}}</h1>',
-                //    controller: function ($scope) {
-                //        $scope.title = 'Hello Link 1';
-                //    }
-                //});
-                //
-                //$stateProvider.state({
-                //    name: 'common.link2',
-                //    url: '/link2',
-                //    templateUrl: 'lemur.html',
-                //    template: '<h1>{{title}}</h1>',
-                //    controller: function ($scope) {
-                //        $scope.title = 'Hello Link 2';
-                //    }
-                //});
 
                 ssSideNavSectionsProvider.initWithSections([{
                     id: 'home',
@@ -182,45 +158,10 @@
                         });
                 };
             }])
-        .controller('CommonCtrl', [
-            '$scope',
-            '$mdSidenav',
-            '$timeout',
-            '$rootScope',
-            '$state',
-            'ssSideNav',
-            'ssSideNavSharedService',
-            'sharedProperties',
-            function ($scope,
-                      $mdSidenav,
-                      $timeout,
-                      $rootScope,
-                      $state,
-                      ssSideNav,
-                      ssSideNavSharedService,
-                      sharedProperties) {
-
-                //$scope.onClickMenu = function () {
-                //    $mdSidenav('left').toggle();
-                //};
-                //
-                //$scope.menu = ssSideNav;
-
-                // Listen event SS_SIDENAV_CLICK_ITEM to close menu
-                $rootScope.$on('SS_SIDENAV_CLICK_ITEM', function () {
-                    console.log('do whatever you want after click on item');
-                });
-
-                $scope.headerTitle = sharedProperties.getToolbarTitle();
-
-                // _perform_change_for_demo();
+        .run(['$rootScope',
+            function ($rootScope) {
+                $rootScope.headerTitle = 'Home';
             }
-        ]);
-    //.run(['$rootScope', '$state', '$stateParams',
-    //    function ($rootScope, $state, $stateParams) {
-    //        $rootScope.$state = $state;
-    //        $rootScope.$stateParams = $stateParams;
-    //    }
-    //])
+        ])
 
 })();

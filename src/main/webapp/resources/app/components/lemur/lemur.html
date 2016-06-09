@@ -29,6 +29,8 @@
     <script src="/resources/app/components/lemur/lemur.js"></script>
     <script src="/resources/app/components/lemur/shared/common.js"></script>
     <script src="/resources/app/components/lemur/shared/common-services.js"></script>
+    <script src="/resources/app/components/lemur/about/about-ctrl.js"></script>
+    <script src="/resources/app/components/lemur/home/home-ctrl.js"></script>
 </head>
 <body>
 <div layout="row" ng-controller="AppCtrl">
@@ -41,7 +43,7 @@
                 <span flex></span>
                 <img src="/resources/img/foot-sm.png" alt="lemur">
                 <h2>
-                    <span>{{title}}</span>
+                    <span>{{headerTitle}}</span>
                 </h2>
                 <span flex></span>
                 <md-button class="md-icon-button" show-gt-sm ng-click="logout()">

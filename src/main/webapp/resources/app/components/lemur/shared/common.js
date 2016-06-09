@@ -28,7 +28,7 @@ angular.module('lemurApp')
 
 
             $scope.menu = ssSideNav;
-
+            $rootScope.headerTitle = 'Common';
             // Listen event SS_SIDENAV_CLICK_ITEM to close menu
             $rootScope.$on('SS_SIDENAV_CLICK_ITEM', function() {
                 console.log('do whatever you want after click on item');
