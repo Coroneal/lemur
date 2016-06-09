@@ -73,74 +73,72 @@
                 $stateProvider.state({
                     name: 'lemur',
                     abstract: true,
-                    templateUrl: 'lemur.html',
-                    controller: 'AppCtrl'
+                    templateUrl: 'shared/common.html',
+                    controller: 'CommonCtrl'
                 });
 
                 $stateProvider.state({
                     name: 'lemur.home',
                     url: '/',
                     templateUrl: 'home/home.html',
-                    //template: '<h1>{{title}}</h1>',
                     controller: function ($scope) {
                         $scope.title = 'Hello Link 1';
                     }
                 });
 
+                $stateProvider.state({
+                    name: 'lemur.about',
+                    url: '/',
+                    templateUrl: 'about/about.html',
+                    controller: function ($scope) {
+                        $scope.title = 'Hello Link 2';
+                    }
+                });
+
 
                 $stateProvider.state({
-                    name: 'home.list',
-                    url: '/home/list',
+                    name: 'lemur.home.list',
+                    url: '/list',
                     templateUrl: 'home/home-list.html',
                     controller: function ($scope) {
                         $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
                     }
                 });
 
-                $stateProvider.state({
-                    name: 'common.link1',
-                    url: '/link1',
-                    templateUrl: 'lemur.html',
-                    template: '<h1>{{title}}</h1>',
-                    controller: function ($scope) {
-                        $scope.title = 'Hello Link 1';
-                    }
-                });
-
-                $stateProvider.state({
-                    name: 'common.link2',
-                    url: '/link2',
-                    templateUrl: 'lemur.html',
-                    template: '<h1>{{title}}</h1>',
-                    controller: function ($scope) {
-                        $scope.title = 'Hello Link 2';
-                    }
-                });
+                //$stateProvider.state({
+                //    name: 'common.link1',
+                //    url: '/link1',
+                //    templateUrl: 'lemur.html',
+                //    template: '<h1>{{title}}</h1>',
+                //    controller: function ($scope) {
+                //        $scope.title = 'Hello Link 1';
+                //    }
+                //});
+                //
+                //$stateProvider.state({
+                //    name: 'common.link2',
+                //    url: '/link2',
+                //    templateUrl: 'lemur.html',
+                //    template: '<h1>{{title}}</h1>',
+                //    controller: function ($scope) {
+                //        $scope.title = 'Hello Link 2';
+                //    }
+                //});
 
                 ssSideNavSectionsProvider.initWithSections([{
-                    id: 'link_1',
-                    name: 'Link 1',
-                    state: 'common.link1',
-                    type: 'link'
-                }, {
                     id: 'home',
                     name: 'home',
                     state: 'lemur.home',
                     type: 'link'
                 }, {
-                    id: 'link_2',
-                    name: 'Link 2',
-                    state: 'common.link2',
+                    id: 'about',
+                    name: 'about',
+                    state: 'lemur.about',
                     type: 'link'
                 }]);
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
-
-
             }
         ])
-        .config(function ($interpolateProvider) {
-            $interpolateProvider.startSymbol('[[').endSymbol(']]');
-        })
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
@@ -148,7 +146,6 @@
             function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
                 $scope.menu = ssSideNav;
-                $scope.title = 'Home';
 
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
@@ -185,11 +182,45 @@
                         });
                 };
             }])
-        .run(['$rootScope', '$state', '$stateParams',
-            function ($rootScope, $state, $stateParams) {
-                $rootScope.$state = $state;
-                $rootScope.$stateParams = $stateParams;
+        .controller('CommonCtrl', [
+            '$scope',
+            '$mdSidenav',
+            '$timeout',
+            '$rootScope',
+            '$state',
+            'ssSideNav',
+            'ssSideNavSharedService',
+            'sharedProperties',
+            function ($scope,
+                      $mdSidenav,
+                      $timeout,
+                      $rootScope,
+                      $state,
+                      ssSideNav,
+                      ssSideNavSharedService,
+                      sharedProperties) {
+
+                //$scope.onClickMenu = function () {
+                //    $mdSidenav('left').toggle();
+                //};
+                //
+                //$scope.menu = ssSideNav;
+
+                // Listen event SS_SIDENAV_CLICK_ITEM to close menu
+                $rootScope.$on('SS_SIDENAV_CLICK_ITEM', function () {
+                    console.log('do whatever you want after click on item');
+                });
+
+                $scope.headerTitle = sharedProperties.getToolbarTitle();
+
+                // _perform_change_for_demo();
             }
-        ])
-    ;
+        ]);
+    //.run(['$rootScope', '$state', '$stateParams',
+    //    function ($rootScope, $state, $stateParams) {
+    //        $rootScope.$state = $state;
+    //        $rootScope.$stateParams = $stateParams;
+    //    }
+    //])
+
 })();
