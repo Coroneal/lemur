@@ -1,4 +1,4 @@
-angular.module('common', ['ngMaterial'])
+angular.module('loginApp')
     .controller('BaseFormCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.vm = {};

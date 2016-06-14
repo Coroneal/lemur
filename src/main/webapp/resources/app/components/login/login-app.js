@@ -1,4 +1,4 @@
-angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 'ngMaterial', 'ngMessages'])
+angular.module('loginApp', ['spring-security-csrf-token-interceptor', 'ngMaterial', 'ngMessages'])
     .config(function ($mdThemingProvider, $mdIconProvider) {
 
         $mdThemingProvider.definePalette('lemurPalette', {
@@ -27,8 +27,35 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
         $mdThemingProvider.theme('default')
             .primaryPalette('lemurPalette');
     })
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService',
-        function ($scope, $http, $mdSidenav, $mdToast, UserService) {
+    .service('srvShareData', function ($window) {
+        var KEY = 'App.SelectedValue';
+
+        var addData = function (newObj) {
+            var mydata = $window.sessionStorage.getItem(KEY);
+            if (mydata) {
+                mydata = JSON.parse(mydata);
+            } else {
+                mydata = [];
+            }
+            mydata.push(newObj);
+            $window.sessionStorage.setItem(KEY, JSON.stringify(mydata));
+        };
+
+        var getData = function () {
+            var mydata = $window.sessionStorage.getItem(KEY);
+            if (mydata) {
+                mydata = JSON.parse(mydata);
+            }
+            return mydata || [];
+        };
+
+        return {
+            addData: addData,
+            getData: getData
+        };
+    })
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService','srvShareData',
+        function ($scope, $http, $mdSidenav, $mdToast, UserService, srvShareData) {
 
             var fieldWithFocus;
 
@@ -82,9 +109,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 }
 
                 var successFn = function () {
-                    //$cookies.put('username', 'oatmeal');
-                    //user.userName = 'Ancia';
-                    window.location.replace('/resources/app/components/lemur/lemur.html');
+                    srvShareData.addData('sdfsdfsdfsdfsdfsdfsd');
+                    window.location.href = "/resources/app/components/lemur/lemur.html";
                 };
                 var failFn = function () {
                     $scope.loginForm.username.$setValidity("authenticate", false);

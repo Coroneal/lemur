@@ -94,4 +94,71 @@ angular.module('loginApp')
                     });
                 $scope.blur();
             };
+        }])
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService', 'srvShareData',
+        function ($scope, $http, $mdSidenav, $mdToast, UserService, srvShareData) {
+
+            var fieldWithFocus;
+
+            $scope.vm.loginForm = {
+                submitted: false,
+                errorMessages: []
+            };
+
+            $scope.vm.loginFormPristine = angular.copy($scope.vm.loginForm);
+
+            $scope.focus = function (fieldName) {
+                fieldWithFocus = fieldName;
+                if (fieldWithFocus === 'username' || fieldWithFocus === 'password') {
+                    $scope.loginForm.username.$setValidity("authenticate", true);
+                    $scope.loginForm.password.$setValidity("authenticate", true);
+                }
+            };
+
+            $scope.blur = function () {
+                fieldWithFocus = undefined;
+            };
+
+            $scope.isMessagesVisible = function (fieldName) {
+                return fieldWithFocus === fieldName || $scope.vm.loginForm.submitted;
+            };
+
+            function buildToggler(navID) {
+                return function () {
+                    $mdSidenav(navID)
+                        .toggle()
+                        .then(function () {
+                            console.log("toggle " + navID + " is done");
+                        });
+                    $scope.blur();
+                }
+            }
+
+            $scope.toggleRight = buildToggler('right');
+
+            $scope.isOpenRight = function () {
+                return $mdSidenav('right').isOpen();
+            };
+
+            $scope.onLogin = function () {
+                console.log('Attempting login with username ' + $scope.vm.loginForm.username + ' and password ' + $scope.vm.loginForm.password);
+
+                $scope.vm.loginForm.submitted = true;
+
+                if ($scope.loginForm.$invalid) {
+                    return;
+                }
+
+                var successFn = function () {
+                    srvShareData.addData('sdfsdfsdfsdfsdfsdfsd');
+                    window.location.href = "/resources/app/components/lemur/lemur.html";
+                };
+                var failFn = function () {
+                    $scope.loginForm.username.$setValidity("authenticate", false);
+                    $scope.loginForm.password.$setValidity("authenticate", false);
+
+                };
+                UserService.login($scope.vm.loginForm.username, $scope.vm.loginForm.password, successFn, failFn);
+            };
         }]);
+
