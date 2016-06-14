@@ -1,4 +1,16 @@
 angular.module('loginApp')
+    .controller('BaseFormCtrl', ['$scope', function ($scope) {
+
+        $scope.vm = {};
+
+        function markAppAsInitialized() {
+            if ($scope.vm.appReady == undefined) {
+                $scope.vm.appReady = true;
+            }
+        }
+
+        markAppAsInitialized();
+    }])
     .controller('NewUserCtrl', ['$scope', '$timeout', '$http', '$mdSidenav', '$log', '$mdDialog', '$mdMedia',
         function ($scope, $timeout, $http, $mdSidenav, $log, $mdDialog, $mdMedia) {
 
@@ -36,6 +48,7 @@ angular.module('loginApp')
 
 
             $scope.createUser = function () {
+
                 console.log('Creating user with username ' + $scope.vm.registerForm.newUsername + ' and password ' + $scope.vm.registerForm.newPassword);
 
                 $scope.vm.registerForm.submitted = true;
@@ -95,8 +108,8 @@ angular.module('loginApp')
                 $scope.blur();
             };
         }])
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService', 'srvShareData',
-        function ($scope, $http, $mdSidenav, $mdToast, UserService, srvShareData) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService', 'sharedDataService',
+        function ($scope, $http, $mdSidenav, $mdToast, UserService, sharedDataService) {
 
             var fieldWithFocus;
 
@@ -150,7 +163,7 @@ angular.module('loginApp')
                 }
 
                 var successFn = function () {
-                    srvShareData.addData('sdfsdfsdfsdfsdfsdfsd');
+                    sharedDataService.addData($scope.vm.loginForm.username);
                     window.location.href = "/resources/app/components/lemur/lemur.html";
                 };
                 var failFn = function () {

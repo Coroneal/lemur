@@ -1,5 +1,5 @@
 angular.module('loginApp')
-    .service('srvShareData', function ($window) {
+    .service('sharedDataService', function ($window) {
         var KEY = 'App.SelectedValue';
 
         var addData = function (newObj) {
@@ -26,7 +26,7 @@ angular.module('loginApp')
             getData: getData
         };
     })
-    .service('UserService', ['$http', '$q', function ($http, $q) {
+    .service('UserService', ['$http', function ($http) {
 
         this.login = function (username, password, succFn, failFn) {
             var postUsername = username != undefined ? username : '';

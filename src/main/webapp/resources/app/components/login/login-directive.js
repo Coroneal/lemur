@@ -1,15 +1,4 @@
 angular.module('loginApp')
-    .controller('BaseFormCtrl', ['$scope', '$http', function ($scope, $http) {
-
-        $scope.vm = {};
-
-        function markAppAsInitialized() {
-            if ($scope.vm.appReady == undefined) {
-                $scope.vm.appReady = true;
-            }
-        }
-        markAppAsInitialized();
-    }])
     .directive('usernameAvailable', ['$http', '$q', function ($http, $q) {
         return {
             require: 'ngModel',

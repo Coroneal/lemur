@@ -116,25 +116,24 @@
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
             }
         ])
-        .service('ServiceB', function(ServiceA) {
-            this.getValue = function() {
+        .service('ServiceB', function (ServiceA) {
+            this.getValue = function () {
                 return ServiceA.getValue();
             };
 
-            this.setValue = function() {
+            this.setValue = function () {
                 ServiceA.setValue('New value');
             }
         })
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
-        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'srvShareData',
-            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav,srvShareData) {
+        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'sharedDataService',
+            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav, sharedDataService) {
 
                 $scope.menu = ssSideNav;
 
-
-                console.log(srvShareData.getData());
+                console.log('hello '+sharedDataService.getData());
 
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
