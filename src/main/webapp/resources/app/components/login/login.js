@@ -27,8 +27,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
         $mdThemingProvider.theme('default')
             .primaryPalette('lemurPalette');
     })
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', 'UserService', '$mdToast',
-        function ($scope, $http, $mdSidenav, UserService) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService',
+        function ($scope, $http, $mdSidenav, $mdToast, UserService) {
 
             var fieldWithFocus;
 
@@ -73,7 +73,7 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
             };
 
             $scope.onLogin = function () {
-                console.log('Attempting login with username ' + $scope.vm.username + ' and password ' + $scope.vm.password);
+                console.log('Attempting login with username ' + $scope.vm.loginForm.username + ' and password ' + $scope.vm.loginForm.password);
 
                 $scope.vm.loginForm.submitted = true;
 
@@ -82,6 +82,8 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 }
 
                 var successFn = function () {
+                    //$cookies.put('username', 'oatmeal');
+                    //user.userName = 'Ancia';
                     window.location.replace('/resources/app/components/lemur/lemur.html');
                 };
                 var failFn = function () {

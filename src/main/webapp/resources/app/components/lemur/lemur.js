@@ -15,7 +15,8 @@
             'ngTouch',
             'ui.router',
             'sasrio.angular-material-sidenav',
-            'spring-security-csrf-token-interceptor'
+            'spring-security-csrf-token-interceptor',
+            'loginApp'
         ])
         .config(function ($mdThemingProvider) {
 
@@ -122,6 +123,8 @@
             function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
                 $scope.menu = ssSideNav;
+
+                //console.log($cookies.get('username'));
 
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
