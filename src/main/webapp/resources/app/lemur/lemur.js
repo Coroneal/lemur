@@ -122,7 +122,9 @@
         .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'sharedUserDataService',
             function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav, sharedUserDataService) {
 
+                $scope.vm = {};
                 $scope.menu = ssSideNav;
+                $scope.vm.menu = {};
                 $scope.vm.menu.username = sharedUserDataService.getLoggedUser();
                 console.log('hello '+sharedUserDataService.getLoggedUser());
 

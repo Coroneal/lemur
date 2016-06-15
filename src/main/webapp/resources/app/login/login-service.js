@@ -31,10 +31,13 @@ angular.module('loginApp')
 
         return {
             setLoggedUser: function (user) {
+                console.log(USER_KEY);
                 $window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
             },
             getLoggedUser: function () {
+                console.log(USER_KEY);
                 var mydata = $window.sessionStorage.getItem(USER_KEY);
+                console.log(mydata);
                 if (mydata) {
                     mydata = JSON.parse(mydata);
                 }
@@ -58,5 +61,5 @@ angular.module('loginApp')
             //    }
             //    return mydata || [];
             //}
-        };
+        }
     });

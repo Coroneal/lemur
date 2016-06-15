@@ -6,6 +6,6 @@ angular.module('lemurApp')
         '$rootScope',
         function ($scope,
                   $rootScope) {
-            $rootScope.headerTitle = 'Home';
+            $rootScope.headerTitle = 'Welcome Page';
         }
     ]);
