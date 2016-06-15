@@ -35,43 +35,45 @@
     <script src="/resources/app/lemur/home/home-ctrl.js"></script>
 </head>
 <body>
-<div layout="row" ng-controller="AppCtrl">
-    <section layout="column" flex>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" show-gt-sm ng-click="toggleFilter('left')">
-                    <i class="material-icons">menu</i>
-                </md-button>
-                <span flex></span>
-                <img src="/resources/img/foot-sm.png" alt="lemur">
-                <h2>
-                    <span>{{headerTitle}}</span>
-                </h2>
-                <span flex></span>
-                <md-button class="md-icon-button" show-gt-sm ng-click="logout()">
-                    <i class="material-icons">power_settings_new</i>
-                </md-button>
-            </div>
-        </md-toolbar>
-        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-            <md-toolbar class="md-primary md-hue-3" layout="row">
+<div layout="column" layout-fill ng-controller="AppCtrl">
+    <div layout="row" flex>
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-sm')">
+            <header class="nav-header" ss-style-color="{'background-color': 'primary.default'}">
                 <h1 class="md-toolbar-tools">{{vm.menu.username}}</h1>
                 <span flex></span>
                 <md-button class="md-icon-button md-primary" ng-click="closeFilter('left')">
                     <i class="material-icons">arrow_back</i>
                 </md-button>
-            </md-toolbar>
+            </header>
+            <md-button class="md-icon-button md-primary" ng-click="closeFilter('left')">
+                <i class="material-icons">arrow_back</i>
+            </md-button>
             <md-content flex role="navigation" ss-style-color="{'background-color': 'primary.accent'}">
                 <ss-sidenav flex menu="menu"></ss-sidenav>
             </md-content>
         </md-sidenav>
-        <md-content flex layout-padding>
-            <div layout="column" flex role="main">
-                <!-- page content goes here-->
-                <div ui-view layout="column">Content</div>
-            </div>
-        </md-content>
-    </section>
+        <div layout="column" flex>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" show-gt-sm ng-click="toggleFilter('left')">
+                        <i class="material-icons">menu</i>
+                    </md-button>
+                    <span flex></span>
+                    <img src="/resources/img/foot-sm.png" alt="lemur">
+                    <h2>
+                        <span>{{headerTitle}}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" show-gt-sm ng-click="logout()">
+                        <i class="material-icons">power_settings_new</i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <!-- page content goes here-->
+            <div ui-view flex layout="column">Content</div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
