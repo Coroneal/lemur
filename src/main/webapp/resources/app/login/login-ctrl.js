@@ -108,8 +108,8 @@ angular.module('loginApp')
                 $scope.blur();
             };
         }])
-    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService', 'sharedDataService',
-        function ($scope, $http, $mdSidenav, $mdToast, UserService, sharedDataService) {
+    .controller('LoginCtrl', ['$scope', '$http', '$mdSidenav', '$mdToast', 'UserService', 'sharedUserDataService',
+        function ($scope, $http, $mdSidenav, $mdToast, UserService, sharedUserDataService) {
 
             var fieldWithFocus;
 
@@ -163,7 +163,7 @@ angular.module('loginApp')
                 }
 
                 var successFn = function () {
-                    sharedDataService.addData($scope.vm.loginForm.username);
+                    sharedUserDataService.setLoggedUser($scope.vm.loginForm.username);
                     window.location.href = "/resources/app/components/lemur/lemur.html";
                 };
                 var failFn = function () {

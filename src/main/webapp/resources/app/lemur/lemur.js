@@ -119,12 +119,12 @@
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
-        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'sharedDataService',
-            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav, sharedDataService) {
+        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'sharedUserDataService',
+            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav, sharedUserDataService) {
 
                 $scope.menu = ssSideNav;
-
-                console.log('hello '+sharedDataService.getData());
+                $scope.vm.menu.username = sharedUserDataService.getLoggedUser();
+                console.log('hello '+sharedUserDataService.getLoggedUser());
 
                 $timeout(function () {
                     ssSideNav.setVisible('toogle_2', false);
@@ -134,6 +134,7 @@
                     // force selection on child dropdown menu item and select its state too.
                     ssSideNav.forceSelectionWithId('toogle_1_link_2');
                 }, 1000 * 3);
+
                 $scope.toggleFilter = function (sideId) {
 
                     $mdSidenav(sideId)

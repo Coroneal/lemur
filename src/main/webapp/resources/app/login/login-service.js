@@ -1,31 +1,4 @@
 angular.module('loginApp')
-    .service('sharedDataService', function ($window) {
-        var KEY = 'App.SelectedValue';
-
-        var addData = function (newObj) {
-            var mydata = $window.sessionStorage.getItem(KEY);
-            if (mydata) {
-                mydata = JSON.parse(mydata);
-            } else {
-                mydata = [];
-            }
-            mydata.push(newObj);
-            $window.sessionStorage.setItem(KEY, JSON.stringify(mydata));
-        };
-
-        var getData = function () {
-            var mydata = $window.sessionStorage.getItem(KEY);
-            if (mydata) {
-                mydata = JSON.parse(mydata);
-            }
-            return mydata || [];
-        };
-
-        return {
-            addData: addData,
-            getData: getData
-        };
-    })
     .service('UserService', ['$http', function ($http) {
 
         this.login = function (username, password, succFn, failFn) {
@@ -52,4 +25,38 @@ angular.module('loginApp')
                     }
                 });
         };
-    }]);
+    }])
+    .service('sharedUserDataService', function ($window) {
+        var USER_KEY = 'LemurApp.user';
+
+        return {
+            setLoggedUser: function (user) {
+                $window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+            },
+            getLoggedUser: function () {
+                var mydata = $window.sessionStorage.getItem(USER_KEY);
+                if (mydata) {
+                    mydata = JSON.parse(mydata);
+                }
+                return mydata || [];
+            }
+            //,
+            //setLoggedUser: function (user) {
+            //    var mydata = $window.sessionStorage.getItem(USER_KEY);
+            //    if (mydata) {
+            //        mydata = JSON.parse(mydata);
+            //    } else {
+            //        mydata = [];
+            //    }
+            //    mydata.push(user);
+            //    $window.sessionStorage.setItem(USER_KEY, JSON.stringify(mydata));
+            //},
+            //getLoggedUser: function () {
+            //    var mydata = $window.sessionStorage.getItem(USER_KEY);
+            //    if (mydata) {
+            //        mydata = JSON.parse(mydata);
+            //    }
+            //    return mydata || [];
+            //}
+        };
+    });
