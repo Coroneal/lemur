@@ -169,7 +169,6 @@ angular.module('loginApp')
                 var failFn = function () {
                     $scope.loginForm.username.$setValidity("authenticate", false);
                     $scope.loginForm.password.$setValidity("authenticate", false);
-
                 };
                 UserService.login($scope.vm.loginForm.username, $scope.vm.loginForm.password, successFn, failFn);
             };

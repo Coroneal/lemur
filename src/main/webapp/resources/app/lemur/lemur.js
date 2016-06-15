@@ -116,15 +116,6 @@
                 ssSideNavSectionsProvider.initWithTheme($mdThemingProvider);
             }
         ])
-        .service('ServiceB', function (ServiceA) {
-            this.getValue = function () {
-                return ServiceA.getValue();
-            };
-
-            this.setValue = function () {
-                ServiceA.setValue('New value');
-            }
-        })
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
