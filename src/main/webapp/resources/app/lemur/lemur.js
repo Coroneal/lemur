@@ -125,17 +125,6 @@
                 $scope.vm = {};
                 $scope.menu = ssSideNav;
                 $scope.vm.menu = {};
-                $scope.vm.menu.username = sharedUserDataService.getLoggedUser();
-                console.log('hello '+sharedUserDataService.getLoggedUser());
-
-                $timeout(function () {
-                    ssSideNav.setVisible('toogle_2', false);
-                });
-
-                $timeout(function () {
-                    // force selection on child dropdown menu item and select its state too.
-                    ssSideNav.forceSelectionWithId('toogle_1_link_2');
-                }, 1000 * 3);
 
                 $scope.toggleFilter = function (sideId) {
 

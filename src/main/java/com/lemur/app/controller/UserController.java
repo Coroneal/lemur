@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 /**
- *
- *  REST service for users.
- *
+ * REST service for users.
  */
 
 @Controller
@@ -36,8 +34,7 @@ public class UserController {
     public UserInfoDTO getUserInfo(Principal principal) {
 
         User user = userService.findUserByUsername(principal.getName());
-
-        return user != null ? new UserInfoDTO(user.getUsername()) : null;
+        return user != null ? new UserInfoDTO(user.getUsername(), user.getEmail()) : null;
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -49,8 +46,16 @@ public class UserController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/check", method = RequestMethod.GET)
-    public SuccessDTO checkUsername(@RequestParam(value = "username") String username){
+    public SuccessDTO checkUsername(@RequestParam(value = "username") String username) {
         return new SuccessDTO(userService.checkUsername(username));
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public UserInfoDTO userDetails(@RequestParam(value = "username") String username) {
+        User user = userService.findUserByUsername(username);
+        return user != null ? new UserInfoDTO(user.getUsername(), user.getEmail()) : null;
     }
 
 
