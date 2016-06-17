@@ -28,3 +28,9 @@
 .md-sticky-header > md-content {
     height: 90%;
 }
+
+.leftMenu {
+    min-width: 250px !important;
+    width: 50vw !important;
+    max-width: 250px !important;
+}
