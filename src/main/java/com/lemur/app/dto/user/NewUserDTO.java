@@ -12,6 +12,7 @@ public class NewUserDTO {
     public NewUserDTO() {
     }
 
+
     public String getUsername() {
         return username;
     }

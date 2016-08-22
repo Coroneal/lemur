@@ -58,7 +58,6 @@ public class UserController {
         return user != null ? new UserInfoDTO(user.getUsername(), user.getEmail()) : null;
     }
 
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> errorHandler(Exception exc) {
         LOGGER.error(exc.getMessage(), exc);

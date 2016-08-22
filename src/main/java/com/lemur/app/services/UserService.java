@@ -7,18 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import static com.lemur.app.validation.CommonValidator.*;
+
 import java.util.regex.Pattern;
 
+import static com.lemur.app.validation.CommonValidator.*;
+
 /**
- *
  * Business service for User entity related operations
- *
  */
 @Service
 public class UserService {
 
-    private static final Logger LOGGER = Logger.getLogger(UserService.class);
+    private static final Logger logger = Logger.getLogger(UserService.class);
 
     private static final Pattern PASSWORD_REGEX = Pattern.compile("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}");
 
@@ -30,11 +30,10 @@ public class UserService {
 
 
     /**
-     *
      * creates a new user in the database
      *
      * @param username - the username of the new user
-     * @param email - the user email
+     * @param email    - the user email
      * @param password - the user plain text password
      */
     @Transactional
@@ -55,8 +54,10 @@ public class UserService {
 
         userRepository.save(user);
     }
+
     /**
      * checking if username is taken
+     *
      * @param username - the username of the new user
      */
     @Transactional
