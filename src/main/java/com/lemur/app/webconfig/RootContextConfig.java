@@ -3,6 +3,7 @@ package com.lemur.app.webconfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -15,8 +16,9 @@ import javax.persistence.EntityManagerFactory;
  */
 
 @Configuration
-@ComponentScan({"com.lemur.app.services", "com.lemur.app.init","com.lemur.app.db",
-        "com.lemur.app.webconfig", "com.lemur.app.security"})
+@ComponentScan(basePackages = "com.lemur.app",
+        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com.lemur.app.*.controller.*")
+)
 public class RootContextConfig {
 
     @Bean(name = "transactionManager")

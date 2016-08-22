@@ -1,6 +1,6 @@
 package com.lemur.app.init;
 
-import com.lemur.app.model.User;
+import com.lemur.app.user.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

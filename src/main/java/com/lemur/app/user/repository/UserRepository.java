@@ -1,7 +1,7 @@
-package com.lemur.app.db;
+package com.lemur.app.user.repository;
 
 
-import com.lemur.app.model.User;
+import com.lemur.app.user.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

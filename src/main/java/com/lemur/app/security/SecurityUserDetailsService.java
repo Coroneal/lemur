@@ -1,7 +1,7 @@
 package com.lemur.app.security;
 
-import com.lemur.app.db.UserRepository;
-import com.lemur.app.model.User;
+import com.lemur.app.user.repository.UserRepository;
+import com.lemur.app.user.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

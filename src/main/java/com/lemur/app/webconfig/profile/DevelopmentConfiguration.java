@@ -1,8 +1,6 @@
 package com.lemur.app.webconfig.profile;
 
 import com.lemur.app.init.TestDataInitializer;
-import java.util.HashMap;
-import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -11,6 +9,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Development specific configuration - creates a localhost postgresql datasource,
@@ -42,7 +43,7 @@ public class DevelopmentConfiguration {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.lemur.app.model"});
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.lemur.app.user.model", "com.lemur.app.model"});
         entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 

@@ -1,11 +1,11 @@
-package com.lemur.app.controller;
+package com.lemur.app.user.controller;
 
 
 import com.lemur.app.dto.SuccessDTO;
-import com.lemur.app.dto.user.NewUserDTO;
-import com.lemur.app.dto.user.UserInfoDTO;
-import com.lemur.app.model.User;
-import com.lemur.app.services.UserService;
+import com.lemur.app.user.dto.NewUserDTO;
+import com.lemur.app.user.dto.UserInfoDTO;
+import com.lemur.app.user.model.User;
+import com.lemur.app.user.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

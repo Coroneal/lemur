@@ -1,5 +1,7 @@
-package com.lemur.app.model;
+package com.lemur.app.user.model;
 
+
+import com.lemur.app.model.AbstractEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 @NamedQueries({
         @NamedQuery(
-                name = com.lemur.app.model.User.FIND_BY_USERNAME,
+                name = User.FIND_BY_USERNAME,
                 query = "select u from User u where username = :username"
         )
 })

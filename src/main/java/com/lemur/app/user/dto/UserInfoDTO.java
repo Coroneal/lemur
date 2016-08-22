@@ -1,4 +1,4 @@
-package com.lemur.app.dto.user;
+package com.lemur.app.user.dto;
 
 /**
  * JSON-serializable DTO containing user data

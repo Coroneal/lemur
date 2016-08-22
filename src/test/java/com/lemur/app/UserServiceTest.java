@@ -1,7 +1,7 @@
 package com.lemur.app;
 
-//import com.lemur.app.model.User;
-//import com.lemur.app.services.UserService;
+//import com.lemur.app.user.model.User;
+//import com.lemur.app.user.service.UserService;
 //import com.lemur.app.webconfig.RootContextConfig;
 //import com.lemur.app.webconfig.profile.TestConfiguration;
 //import javax.persistence.EntityManager;
