@@ -96,7 +96,7 @@
                 $stateProvider.state({
                     name: 'lemur.home.list',
                     url: '/list',
-                    templateUrl: 'home/home-list.html',
+                    templateUrl: 'home/homeList.html',
                     controller: function ($scope) {
                         $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
                     }
