@@ -1,4 +1,4 @@
-package com.lemur.app.webconfig;
+package com.lemur.config.web;
 
 import com.lemur.app.user.controller.UserController;
 import org.springframework.context.annotation.ComponentScan;

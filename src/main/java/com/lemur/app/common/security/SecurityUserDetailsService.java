@@ -1,4 +1,4 @@
-package com.lemur.app.security;
+package com.lemur.app.common.security;
 
 import com.lemur.app.user.repository.UserRepository;
 import com.lemur.app.user.model.User;

@@ -1,7 +1,7 @@
 package com.lemur.app.user.model;
 
 
-import com.lemur.app.model.AbstractEntity;
+import com.lemur.app.common.model.AbstractEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;

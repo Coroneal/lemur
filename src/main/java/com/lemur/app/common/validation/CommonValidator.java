@@ -1,4 +1,4 @@
-package com.lemur.app.validation;
+package com.lemur.app.common.validation;
 
 
 import org.apache.commons.lang3.NotImplementedException;

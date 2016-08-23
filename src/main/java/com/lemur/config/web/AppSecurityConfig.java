@@ -1,9 +1,9 @@
-package com.lemur.app.webconfig;
+package com.lemur.config.web;
 
 
 import com.allanditzel.springframework.security.web.csrf.CsrfTokenResponseHeaderBindingFilter;
-import com.lemur.app.security.AjaxAuthenticationSuccessHandler;
-import com.lemur.app.security.SecurityUserDetailsService;
+import com.lemur.app.common.security.AjaxAuthenticationSuccessHandler;
+import com.lemur.app.common.security.SecurityUserDetailsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

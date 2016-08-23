@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.regex.Pattern;
 
-import static com.lemur.app.validation.CommonValidator.*;
+import static com.lemur.app.common.validation.CommonValidator.*;
 
 /**
  * Business service for User entity related operations

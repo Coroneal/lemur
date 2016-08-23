@@ -1,4 +1,4 @@
-package com.lemur.app.model;
+package com.lemur.app.common.model;
 
 import java.util.List;
 

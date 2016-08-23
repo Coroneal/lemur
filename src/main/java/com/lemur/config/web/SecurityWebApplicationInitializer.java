@@ -1,4 +1,4 @@
-package com.lemur.app.webconfig;
+package com.lemur.config.web;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;

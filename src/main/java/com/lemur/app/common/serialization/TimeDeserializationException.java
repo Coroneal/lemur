@@ -1,6 +1,7 @@
-package com.lemur.app.serialization;
+package com.lemur.app.common.serialization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.lemur.app.common.serialization.CustomTimeDeserializer;
 
 /**
  * Custom exception thrown when it was not possible to deserialize a time field,

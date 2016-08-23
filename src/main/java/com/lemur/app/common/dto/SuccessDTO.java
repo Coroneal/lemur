@@ -1,4 +1,4 @@
-package com.lemur.app.dto;
+package com.lemur.app.common.dto;
 
 /**
  * DTO used only for question requests

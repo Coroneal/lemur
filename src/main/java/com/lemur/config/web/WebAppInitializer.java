@@ -1,7 +1,8 @@
-package com.lemur.app.webconfig;
+package com.lemur.config.web;
 
-import com.lemur.app.webconfig.profile.DevelopmentConfiguration;
-import com.lemur.app.webconfig.profile.TestConfiguration;
+import com.lemur.config.root.RootContextConfig;
+import com.lemur.config.profile.DevelopmentConfiguration;
+import com.lemur.config.profile.TestConfiguration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -11,7 +12,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{RootContextConfig.class, DevelopmentConfiguration.class, TestConfiguration.class,};
+        return new Class<?>[]{RootContextConfig.class, DevelopmentConfiguration.class, TestConfiguration.class};
     }
 
     @Override

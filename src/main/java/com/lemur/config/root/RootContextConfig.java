@@ -1,4 +1,4 @@
-package com.lemur.app.webconfig;
+package com.lemur.config.root;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,14 +10,17 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.EntityManagerFactory;
 
+import static com.lemur.config.root.AppConfigConstants.ROOT_PACkAGE;
+import static com.lemur.config.root.AppConfigConstants.CONTROLLERS_SCAN_REGEX;
+
 /**
  * The root context configuration of the application - the beans in this context will be globally visible
  * in all servlet contexts.
  */
 
 @Configuration
-@ComponentScan(basePackages = "com.lemur.app",
-        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com.lemur.app.*.controller.*")
+@ComponentScan(basePackages = ROOT_PACkAGE,
+        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = CONTROLLERS_SCAN_REGEX)
 )
 public class RootContextConfig {
 

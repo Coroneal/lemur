@@ -1,6 +1,6 @@
-package com.lemur.app.webconfig.profile;
+package com.lemur.config.profile;
 
-import com.lemur.app.init.TestDataInitializer;
+import com.lemur.config.data.TestDataInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -14,17 +14,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Integration testing specific configuration - creates a in-memory datasource,
+ * Development specific configuration - creates a localhost postgresql datasource,
  * sets hibernate on create drop mode and inserts some test data on the database.
- * This allows to clone the project repository and start a running application with the command
- * mvn clean install tomcat7:run-war -Dspring.profiles.active=test
- * Access http://localhost:8080/ and login with test123 / Password2, in order to see some test data,
- * or create a new user.
+ * Set -Dspring.profiles.active=development to activate this config.
  */
 @Configuration
-@Profile("test")
+@Profile("development")
 @EnableTransactionManagement
-public class TestConfiguration {
+public class DevelopmentConfiguration {
 
     @Bean(initMethod = "init")
     public TestDataInitializer initTestData() {
@@ -34,10 +31,10 @@ public class TestConfiguration {
     @Bean(name = "datasource")
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-        dataSource.setUrl("jdbc:hsqldb:mem:mydb");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("jdbc:hsqldb:mem:mydb");
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/lemur?loglevel=0");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postadmin");
         return dataSource;
     }
 
@@ -46,7 +43,7 @@ public class TestConfiguration {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.lemur.app.user.model", "com.lemur.app.model"});
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"com.lemur.app.user.model", "com.lemur.app.common.model"});
         entityManagerFactoryBean.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
@@ -55,6 +52,7 @@ public class TestConfiguration {
         jpaProperties.put("hibernate.show_sql", "true");
         jpaProperties.put("hibernate.format_sql", "true");
         jpaProperties.put("hibernate.use_sql_comments", "true");
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         entityManagerFactoryBean.setJpaPropertyMap(jpaProperties);
 
         return entityManagerFactoryBean;

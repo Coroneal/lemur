@@ -1,4 +1,4 @@
-package com.lemur.app.security;
+package com.lemur.app.common.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;

@@ -1,4 +1,4 @@
-package com.lemur.app.init;
+package com.lemur.config.data;
 
 import com.lemur.app.user.model.User;
 import org.hibernate.Session;
