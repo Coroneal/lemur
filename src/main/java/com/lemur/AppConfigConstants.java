@@ -1,4 +1,4 @@
-package com.lemur.config.root;
+package com.lemur;
 
 public interface AppConfigConstants {
 
