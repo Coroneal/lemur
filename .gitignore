@@ -6,5 +6,5 @@ node_modules
 *.sh
 target/
 target/**
-bower_components
+#bower_components
 
