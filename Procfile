@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/lemur.jar -Dspring.profiles.active=development
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/lemur.jar  --spring.profiles.active=development
