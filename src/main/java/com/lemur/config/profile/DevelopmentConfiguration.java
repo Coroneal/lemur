@@ -32,11 +32,20 @@ public class DevelopmentConfiguration {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/lemur?loglevel=0");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postadmin");
+        dataSource.setUrl("jdbc:postgresql://xgRny321MMpbEwiu55_0QQHcCG@ec2-54-235-102-190.compute-1.amazonaws.com:5432/d6hvc206kp78sr?loglevel=0");
+        dataSource.setUsername("czlzuoqzzdnavl");
+        dataSource.setPassword("xgRny321MMpbEwiu55_0QQHcCG");
         return dataSource;
     }
+//    @Bean(name = "datasource")
+//    public DriverManagerDataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("org.postgresql.Driver");
+//        dataSource.setUrl("jdbc:postgresql://localhost:5432/lemur?loglevel=0");
+//        dataSource.setUsername("postgres");
+//        dataSource.setPassword("postadmin");
+//        return dataSource;
+//    }
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DriverManagerDataSource dataSource) {
