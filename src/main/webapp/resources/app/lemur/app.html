@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/lemur.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/angular-csp.css">
-    <link rel="stylesheet" href="/resources/bower_components/angular-material-sidenav/angular-material-sidenav.css">
+    <link rel="stylesheet" type="text/css"
+          href="/resources/bower_components/angular-material-sidenav/angular-material-sidenav.css">
 
     <script src="/resources/bower_components/angular/angular.js"></script>
     <script src="/resources/bower_components/angular-messages/angular-messages.js"></script>
@@ -29,10 +30,11 @@
     <script src="/resources/app/login/loginApp.js"></script>
     <script src="/resources/app/login/loginCtrl.js"></script>
     <script src="/resources/app/login/loginService.js"></script>
-    <script src="/resources/app/lemur/lemur.js"></script>
+    <script src="/resources/app/lemur/app.js"></script>
     <script src="/resources/app/lemur/shared/common.js"></script>
     <script src="/resources/app/lemur/about/aboutCtr.js"></script>
     <script src="/resources/app/lemur/home/homeCtrl.js"></script>
+    <script src="/resources/app/lemur/userSettings/userSettingsCtrl.js"></script>
 </head>
 <body>
 <div layout="column" layout-fill ng-controller="AppCtrl">
@@ -70,7 +72,6 @@
                     </md-button>
                 </div>
             </md-toolbar>
-            <!-- page content goes here-->
             <div ui-view flex layout-margin layout="column">Content</div>
         </div>
     </div>

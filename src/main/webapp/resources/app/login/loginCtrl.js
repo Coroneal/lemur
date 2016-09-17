@@ -164,7 +164,7 @@ angular.module('loginApp')
 
                 var successFn = function () {
                     sharedUserDataService.setLoggedUser($scope.vm.loginForm.username);
-                    window.location.href = "/resources/app/lemur/lemur.html";
+                    window.location.href = "/resources/app/lemur/app.html";
                 };
                 var failFn = function () {
                     $scope.loginForm.username.$setValidity("authenticate", false);

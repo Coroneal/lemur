@@ -84,6 +84,13 @@
                 });
 
                 $stateProvider.state({
+                    name: 'lemur.userSettings',
+                    url: '/',
+                    templateUrl: 'userSettings/userSettings.html',
+                    controller: 'userSettingsCtrl'
+                });
+
+                $stateProvider.state({
                     name: 'lemur.about',
                     url: '/',
                     templateUrl: 'about/about.html',
@@ -105,6 +112,11 @@
                     name: 'home',
                     state: 'lemur.home',
                     type: 'link'
+                },{
+                    id: 'userSettings',
+                    name: 'user Settings',
+                    state: 'lemur.userSettings',
+                    type: 'link'
                 }, {
                     id: 'about',
                     name: 'about',
@@ -125,13 +137,11 @@
                 $scope.vm.menu = {};
 
                 $scope.toggleFilter = function (sideId) {
-
                     $mdSidenav(sideId)
                         .toggle()
                         .then(function () {
                             $log.debug("toggle " + sideId + " is done");
                         });
-
                 };
 
                 $scope.closeFilter = function (sideId) {
