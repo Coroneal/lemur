@@ -34,3 +34,8 @@
     width: 50vw !important;
     max-width: 250px !important;
 }
+
+.text-ellipsis {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}

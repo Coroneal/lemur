@@ -1,7 +1,5 @@
 (function () {
     'use strict';
-
-    // Prepare the 'users' module for subsequent registration of controllers and delegates
     angular.module('lemurApp',
         [
             'ngMaterial',
@@ -119,8 +117,8 @@
         .config(function ($httpProvider) {
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         })
-        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav', 'sharedUserDataService',
-            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav, sharedUserDataService) {
+        .controller('AppCtrl', ['$scope', '$timeout', '$window', '$log', '$mdSidenav', '$http', 'ssSideNav',
+            function ($scope, $timeout, $window, $log, $mdSidenav, $http, ssSideNav) {
 
                 $scope.vm = {};
                 $scope.menu = ssSideNav;
@@ -135,22 +133,17 @@
                         });
 
                 };
+
                 $scope.closeFilter = function (sideId) {
                     $mdSidenav(sideId).close()
                         .then(function () {
                             $log.debug("close RIGHT is done");
                         });
                 };
+
                 $scope.logout = function () {
                     $http.post('/logout', {})
-                        .then(function (response) {
-                            if (response.status == 200) {
-                                window.location.reload();
-                            }
-                            else {
-                                console.log("Logout failed!");
-                            }
-                        });
+                        .then(window.location.reload());
                 };
             }])
         .run(['$rootScope',
