@@ -24,7 +24,7 @@ angular.module('loginApp')
                     });
                 };
             }
-        }
+        };
     }])
     .directive('equals', function () {
 

@@ -1,0 +1,34 @@
+{
+  "name": "lemur",
+  "version": "0.0.0",
+  "description": "lemur app",
+  "main": "app.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Coroneal/lemur.git"
+  },
+  "keywords": [
+    "lemur"
+  ],
+  "author": "coroneal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coroneal/lemur/issues"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.3.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-html2js": "^0.3.6"
+  }
+}

@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lemur.app</groupId>
     <artifactId>lemur</artifactId>
-    <!--<packaging>war</packaging>-->
     <version>1.0-SNAPSHOT</version>
     <name>Lemur Maven Webapp</name>
 
@@ -206,6 +205,46 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.github.eirslett</groupId>-->
+                <!--<artifactId>frontend-maven-plugin</artifactId>-->
+                <!--<version>1.0</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>install node and npm</id>-->
+                        <!--<goals>-->
+                            <!--<goal>install-node-and-npm</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>deploy</phase>-->
+                        <!--<configuration>-->
+                            <!--<nodeVersion>v0.10.26</nodeVersion>-->
+                            <!--<npmVersion>1.4.3</npmVersion>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>npm install</id>-->
+                        <!--<goals>-->
+                            <!--<goal>npm</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>deploy</phase>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>grunt dev</id>-->
+                        <!--<goals>-->
+                            <!--<goal>grunt</goal>-->
+                        <!--</goals>-->
+
+                        <!--&lt;!&ndash; optional: the default phase is "generate-resources" &ndash;&gt;-->
+                        <!--<phase>deploy</phase>-->
+
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash; optional: if not specified, it will run Grunt's default-->
+                            <!--task (and you can remove this whole <configuration> section.) &ndash;&gt;-->
+                            <!--<arguments>watch:dev</arguments>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

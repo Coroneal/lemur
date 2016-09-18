@@ -2,8 +2,8 @@ angular.module('loginApp')
     .service('UserService', ['$http', '$q', function ($http, $q) {
 
         this.login = function (username, password, succFn, failFn) {
-            var postUsername = username != undefined ? username : '';
-            var postPassword = password != undefined ? password : '';
+            var postUsername = username !== undefined ? username : '';
+            var postPassword = password !== undefined ? password : '';
 
             var postData = 'username=' + postUsername + '&password=' + postPassword + '&email=""';
 
@@ -65,5 +65,5 @@ angular.module('loginApp')
             getLoggedUser: function () {
                 return getProperty(USER_KEY);
             }
-        }
+        };
     });

@@ -114,7 +114,7 @@
                     type: 'link'
                 },{
                     id: 'userSettings',
-                    name: 'user Settings',
+                    name: 'user settings',
                     state: 'lemur.userSettings',
                     type: 'link'
                 }, {
@@ -160,6 +160,6 @@
             function ($rootScope) {
                 $rootScope.headerTitle = 'Home';
             }
-        ])
+        ]);
 
 })();

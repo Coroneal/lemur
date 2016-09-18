@@ -4,7 +4,7 @@ angular.module('loginApp')
         $scope.vm = {};
 
         function markAppAsInitialized() {
-            if ($scope.vm.appReady == undefined) {
+            if ($scope.vm.appReady === undefined) {
                 $scope.vm.appReady = true;
             }
         }
@@ -144,7 +144,7 @@ angular.module('loginApp')
                             console.log("toggle " + navID + " is done");
                         });
                     $scope.blur();
-                }
+                };
             }
 
             $scope.toggleRight = buildToggler('right');
