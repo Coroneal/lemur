@@ -4,7 +4,7 @@
   "description": "lemur app",
   "main": "app.html",
   "scripts": {
-    "test": "test"
+    "postinstall": "grunt install"
   },
   "repository": {
     "type": "git",
