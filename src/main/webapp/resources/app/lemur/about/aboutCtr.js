@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('lemurApp')
-        .controller('AboutCtrl', ['$scope', '$rootScope',
+        .controller('aboutCtrl', ['$scope', '$rootScope',
             function ($scope, $rootScope) {
 
                 $rootScope.headerTitle = 'About';

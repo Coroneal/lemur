@@ -58,7 +58,7 @@ module.exports = function (grunt) {
         },
         injector: {
             options: {
-                transform: function (file, i, length) {
+                transform: function (file) {
                     var base = 'src/main/webapp/';
                     return '<script src=' + file.substring(base.length) + '></script>';
                 }
@@ -79,6 +79,7 @@ module.exports = function (grunt) {
                         'src/main/webapp/resources/bower_components/angular-touch/angular-touch.js',
                         'src/main/webapp/resources/bower_components/angular-ui-router/release/angular-ui-router.js',
                         'src/main/webapp/resources/bower_components/angular-material-sidenav/angular-material-sidenav.js',
+                        'src/main/webapp/resources/app/lemur/app.js',
                         'src/main/webapp/resources/app/**/*.js'
                     ],
 
@@ -96,6 +97,7 @@ module.exports = function (grunt) {
                         'src/main/webapp/resources/bower_components/angular-touch/angular-touch.js',
                         'src/main/webapp/resources/bower_components/angular-ui-router/release/angular-ui-router.js',
                         'src/main/webapp/resources/bower_components/angular-material-sidenav/angular-material-sidenav.js',
+                        'src/main/webapp/resources/app/lemur/app.js',
                         'src/main/webapp/resources/app/**/*.js'
                     ]
                 }

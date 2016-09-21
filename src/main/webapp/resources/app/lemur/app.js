@@ -94,7 +94,7 @@
                     name: 'lemur.about',
                     url: '/',
                     templateUrl: 'about/about.html',
-                    controller: 'AboutCtrl'
+                    controller: 'aboutCtrl'
                 });
 
 
